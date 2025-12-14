@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Nanako Shimizu | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kufam&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap" rel="stylesheet">
+
+
+
+  <style>
+/* 左右背景の共通設定 */
+.side-image {
+  position:fixed;
+  top: 0px; /* ← ここで縦位置の調整ができる（中央 or 上固定など） */
+  width: 31%; 
+  z-index: -1; /* ← これで中央コンテンツより奥のレイヤーに固定 */
+  opacity: 0.9;
+}
+
+.side-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 左右の位置を完全に対称にする */
+.left-side {
+  left: 0;
+  margin-left: 10px; /* 画面端からの距離調整用 */
+}
+
+.right-side {
+  right: 0;
+  margin-right: 10px; /* 左右完全に揃える */
+}
+
+  body {
+  background-color: #F5F3EB; /* 本の外側の背景（薄いグレーとか） */
+  margin: 0;
+  padding: 0;
+  font-family: 'Kumbh Sans', sans-serif;
+  color: #666;
+  }
+
+.section-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center; /* 中央のbook-containerをセンター */
+  align-items: stretch;
+  min-height: 100vh;
+}
+.works-section
+ {
+  position: relative;
+  padding: 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  z-index: 1;
+}
+.about-section
+ {
+  position: relative;
+  padding: 1rem;
+  min-height: auto;
+  height: auto;
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  z-index: 1;
+}
+
+.chapter-line-alt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.chapter-line-alt hr {
+  flex: 1;
+  border: none;
+  height: 1px;
+  background-color: #999;
+}
+
+.chapter-line-alt span {
+  white-space: nowrap;
+  font-family: 'La Belle Aurore', cursive;
+  color: #999;
+}
+
+
+/* 左右背景領域 */
+.background-left,
+.background-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  pointer-events: none;
+  z-index: -2;
+}
+.background-left {
+  left: 0;
+}
+.background-right {
+  right: 0;
+}
+
+.simple-photo {
+  width: 160px; /* 写真素材のサイズに合わせて調整 */
+  height: auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+
+.simple-photo.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.about-gallery {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  pointer-events: none;
+  z-index: -3;
+}
+
+.about-gallery.background-left {
+  left: 0;
+}
+.about-gallery.background-right {
+  right: 0;
+}
+
+.framed-photo img {
+  transition: transform 0.3s ease-out;
+}
+
+
+.photo-1 img {
+  max-width: 200px;
+  transform: translateX(-430px);
+}
+.photo-2 img {
+  max-height: 300px;
+  transform: translateX(-370px);
+}
+.photo-3 img {
+  max-height: 200px;
+  width: auto;
+  transform: translateX(-500px);
+}
+.photo-4 img {
+  max-width: 200px;
+  transform: translateX(-320px);
+}
+.photo-5 img {
+  max-width: 200px;
+  transform: translateX(400px);
+}
+.photo-6 img {
+  max-height: 200px;
+  transform: translateX(400px);
+}
+.photo-7 img {
+  max-height: 300px;
+  width: auto;
+  transform: translateX(500px);
+}
+.photo-8 img {
+  max-width: 200px;
+  transform: translateX(300px);
+}
+
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+.title {
+  font-family: 'Mansalva', cursive;
+  letter-spacing: 10px; /* ロゴっぽく広める */
+  font-size: 2rem; 
+  color: #666;
+  text-align: center;
+}
+.logo {
+  font-family: 'Mansalva', cursive;
+  font-size: 1rem;
+  color: #666; 
+  text-align: center;
+  letter-spacing: 1px;
+}
+  .first-icon {
+  left: 50%;
+  opacity: 0.6;
+  animation: bounce 2s infinite;
+}
+
+.first-icon img {
+  height: 40px;
+  width: auto;
+}
+.book-container {
+  position: relative; /* レイヤー分離のために必要 */
+  z-index: 10; /* 背景より上に */
+  max-width: 500px;
+  margin: 0 auto;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    url('image/texture/book.jpg');
+  background-size: cover;
+  background-repeat: repeat;
+  padding: 0.5rem; /* 上下余白は各sectionで調整 */
+}
+.book-container2 {
+  position: relative; /* レイヤー分離のために必要 */
+  z-index: 10; /* 背景より上に */
+  max-width: 500px;
+  margin: 0 auto;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    url('image/texture/book.jpg');
+  background-size: cover;
+  background-repeat: repeat;
+  padding: 2rem; /* 上下余白は各sectionで調整 */
+}
+
+
+.first-view {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 8rem 2rem;
+  text-align: center;
+  background-color:none;  
+  background-size: cover;
+  box-sizing: border-box;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.first-view::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  pointer-events: none; /* クリック判定を邪魔しないように */
+  z-index: 1;
+}
+
+
+.first-view h1 {
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.first-view p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+    .work-card {
+      border: 1px solid var(--main-color);
+      padding: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-5px);
+    }
+
+
+    .about-photo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1rem ;
+    }
+
+.about-photo {
+  max-width: 100%;
+  height: auto;
+  width: 300px;
+}
+.history-timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.history-item {
+  text-align: left;
+  
+}
+
+.year-label {
+  font-size: 1.5rem;
+  color: #999;
+  font-family:'Mansalva', cursive;
+}
+
+.history-item img {
+  width: 100%;
+  max-width: 500px;
+  max-height: 150px;
+}
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    /* スマホ対応 */
+    @media (max-width: 768px) {
+      .book-container {
+        padding: 2rem 1rem;
+        max-width: 90%;
+      }
+
+      .chapter-nav {
+        display: none;
+      }
+
+      .first-view h1 {
+        font-size: 2rem;
+      }
+    }
+          .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .section-title {
+  font-family: 'Mansalva',cursive;
+  font-size: 1.7rem;
+  margin-bottom: 2rem; /* 説明文との間に余裕 */
+  text-align: center;
+  padding-left: 1.5rem; /* about-contentと同じpadding */
+  max-width: 600px;
+  margin: 12%;
+
+      }
+
+      .work-card img {
+        width: 100%;
+        height: auto;
+        display: inline-block;
+      }
+      .work-card{
+        text-align: center;
+        width: 70%;
+        margin: 0 auto;      /* ← 中央寄せの必須 */
+   display:block;
+      }
+
+      .about-content {
+  margin: 0 auto;
+  text-align: left;
+  line-height: 2; /* 行間ゆったり */
+  font-size: 1.05rem;
+}
+
+
+.skills-title {
+  font-size: 1.5rem;
+  margin: 3rem 0 1rem;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1.5rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.skill-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.strengths-grid {
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+  display: flex;
+  grid-template-columns: repeat(3, 80px);
+}
+.strength-item {
+  text-align: center;
+  color: #666;
+}
+.strength-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.strength-button img {
+  width: 50px;
+  height: 50px;
+}
+.strength-button:hover {
+  transform: scale(1.05);
+}
+.strength-button p {
+  margin-top: 0.5rem;
+  font-family: 'Kumbh Sans', sans-serif;
+  color: #666;
+  white-space: nowrap;
+}
+
+/* Popup styles */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+.popup-content {
+  background: #fff;
+  max-width: 400px;
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 12px;
+  position: relative;
+}
+.close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: -40px; /* 外枠にギリギリかぶる */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3; /* 外枠より上にくるように */
+}
+
+.scroll-text {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.3rem;
+  font-family:'Pixmachina', sans-serif;
+  letter-spacing: 1px;
+}
+
+.scroll-line {
+  width: 2px;
+  height: 100px;
+  background-color: #666;
+  animation: scroll-line-move 1.6s ease-in-out infinite;
+}
+
+@keyframes scroll-line-move {
+  0% { transform: translateY(0); opacity: 0.2; }
+  50% { transform: translateY(10px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.2; }
+}
+
+@media (max-width: 768px) {
+  .scroll-line {
+    height: 20px;
+  }
+
+  .scroll-text {
+    font-size: 0.75rem;
+  }
+}
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+  </style>
+</head>
+<body>
+  <!-- 左右の固定背景写真 -->
+<div class="side-image left-side">
+  <img src="image/irasuto_left.png" alt="左の背景画像">
+</div>
+
+<div class="side-image right-side">
+  <img src="image/irasuto_right.png" alt="右の背景画像">
+</div>
+
+  <!-- 本の本文部分（ファーストビューも中に） -->
+  <main class="book-container">
+
+  <!-- ファーストビュー表紙 -->
+    <section class="section first-view">
+<br>
+<h1 class="title">Nanako Shimizu
+</h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="first-view-bg left"></div>
+<div class="first-view-bg right"></div>
+
+      <div class="first-icon">
+    <img src="image/icon/first-icon.png" alt="first icon" />
+  </div>
+
+  <h1 class="logo">Design that pulls you in</h1>
+
+    </section>
+
+    <div class="chapter-header">
+  <div class="chapter-line-alt">
+    <hr><span></span><hr>
+  </div>
+  </div>
+    <!-- Works　セクション -->
+<div class="section-wrapper works-bg">
+  <section id="works" class="works-section">
+     <div class="book-container">
+
+
+    <h2 class="section-title">My Works</h2>
+  <div class="works-grid">
+    <div class="work-card">
+      <img src="image/mockup/1.png" alt="Work 1" />
+      <div class="work-info">
+        <h4 class="proti">町家不動産</h4>
+        <p>町家不動産様のWEBサイトのデザイン、構築をWebflowにて制作しました。
+          アットホームで町に寄り添った温かい雰囲気と金沢の風情が伝わるWebサイトを目指しました。</p>
+      </div>
+    </div>
+    <div class="work-card">
+      <img src="image/mockup/2.png" alt="Work 2" />
+      <div class="work-info">
+        <h4 class="proti">LARTH 節電ガラスコート LP
+        </h4>
+        <p>LARTH 節電ガラスコートのLPサイトのデザイン、構築をStudioにて制作しました。
+
+           アットホームで町に寄り添った優しい雰囲気と金沢の風情が伝わるWebサイトを目指しました。</p>
+      </div>
+    </div>
+    <div class="work-card">
+      <img src="image/mockup/3.png" alt="Work 3" />
+      <div class="work-info">
+        <h3 class="proti">Shimizu Nanako Portfolio</h3>
+        <p>Short description of the project 3.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="background-left">
+    <!-- SVGで手書きメモ（例：「初めてのクライアントワーク」） -->
+  </div>
+  <div class="background-right">
+    <!-- 他の装飾やSVGなど -->
+  </div>
+</div>
+
+  <div class="chapter-header">
+  <div class="chapter-line-alt">
+    <hr><span></span><hr>
+  </div>
+
+    <!-- About セクション -->
+<div class="section-wrapper about-bg">
+  <section class="about-section">
+    <div class="book-container2">
+
+
+    <!-- 中央コンテンツ -->
+<h2 class="section-title">About Me</h2>  
+<div class="about-photo-wrapper">
+  <img src="image/nanako2.jpg" alt="Nanako Shimizu" class="about-photo" />
+</div>
+<p class="year-label">Nanako Shimizu</p>
+
+<br>
+<p class="year-label">Summary</p>
+<div class="about-content">
+
+      <p>I worked at an auto parts company in Japan for four years,
+where I became interested in design through my involvement in software system projects.
+
+Wanting to explore further, I decided to go abroad to study design and learn how to live independently.
+
+I value open communication as a way to connect deeply with others and build trust.
+and i believe that we can enjoy all situation, even when it’s tough or seems negative, our mindset can turn difficulties into fun experiences or things can learn from somehow.
+
+        </p>
+  
+        <p>How others describe me：extravert / calm<br>
+           Interests：Talking / Reading / Running / Camera<br>
+           Good at：English conversation / Excel</p>
+      </div> 
+
+<br>
+    <!-- 強み -->
+<p class="year-label">Strength</p>
+<div class="strengths-grid">
+      <!-- Strength 1 -->
+      <div class="strength-item">
+        <button class="strength-button" data-popup="popup1">
+          <img src="image/icon/komyu.png" alt="Communication Icon" />
+          <p>Communication</p>
+        </button>
+      </div>
+
+      <!-- Strength 2 -->
+      <div class="strength-item">
+        <button class="strength-button" data-popup="popup2">
+          <img src="image/icon/mazime.png" alt="Problem Solving Icon" />
+          <p>Sincerity</p>
+        </button>
+      </div>
+
+      <!-- Strength 3 -->
+      <div class="strength-item">
+        <button class="strength-button" data-popup="popup3">
+          <img src="image/icon/kokisin.png" alt="Creativity Icon" />
+          <p>Curiosity</p>
+        </button>
+      </div>
+    </div>
+
+    <!-- Popups -->
+<div id="popup1" class="popup-overlay">
+  <div class="popup-content">
+    <span class="close-btn">&times;</span>
+    <h3>Communication</h3>
+    <p>I love communication and listening to other's thoughts or stories. that is my way to build trust and get close with.
+      this is also important to commit one's ideal or know their core needs, so that i can find the best design for them.
+    </p>
+  </div>
+</div>
+
+<div id="popup2" class="popup-overlay">
+  <div class="popup-content">
+    <span class="close-btn">&times;</span>
+    <h3>Sincerity</h3>
+    <p>For all situation, i am serious and trying to be humble. I listen to other's opinions or advices with respects even though it is opposite to mine or hard to accept or understand.
+      i will always be considerate and supportive for them. this will be helpful to me too for knowing new perspect or learning new values to improve myself.</p>
+  </div>
+</div>
+
+<div id="popup3" class="popup-overlay">
+  <div class="popup-content">
+    <span class="close-btn">&times;</span>
+    <h3>Curiosity</h3>
+    <p>I'm willing to try new things. I have a big sense of curiosity and it makes me get out from comfortzone.
+      I tried to engage into IT projects even i was not majoring in science. I went to abroad to study even i can not speak English well at the time.
+      but i know trying new things always gives me tips to live stronger and happier even more. and it makes me someone better than yesterday' myself. 
+    </p>
+  </div>
+</div>
+<br>
+
+    <!-- スキル -->
+<p class="year-label">Skills</p>
+<div class="skills-grid">
+  <div class="skill-item">
+    <img src="image/skills/HTML.png" alt="HTML Icon" />
+    <p>HTML</p>
+  </div>
+  <div class="skill-item">
+    <img src="image/skills/CSS.png" alt="CSS Icon" />
+    <p>CSS</p>
+  </div>
+    <div class="skill-item">
+    <img src="image/skills/Java.png" alt="Java" />
+    <p>Javascript</p>
+  </div>
+    <div class="skill-item">
+    <img src="image/skills/Figma.png" alt="Figma Icon" />
+    <p>Figma</p>
+  </div>
+  <div class="skill-item">
+    <img src="image/skills/Photoshop.png" alt="Photoshop Icon" />
+    <p>Photoshop</p>
+  </div>
+  <div class="skill-item">
+    <img src="image/skills/illustrator.png" alt="Illustrator Icon" />
+    <p>Illustrator</p>
+  </div>
+  <div class="skill-item">
+    <img src="image/skills/VScode.png" alt="VSCode Icon" />
+    <p>VS Code</p>
+  </div>
+  <div class="skill-item">
+    <img src="image/skills/Webflow.png" alt="Webflow Icon" />
+    <p>Webflow</p>
+  </div>
+  <div class="skill-item">
+    <img src="image/skills/Wordpress.png" alt="Wordpress Icon" />
+    <p>Wordpress</p>
+  </div>
+    <div class="skill-item">
+    <img src="image/skills/Studio.png" alt="Studio Icon" />
+    <p>Studio</p>
+  </div>
+  </div>
+  <!-- 左背景エリア -->
+    <div class="about-gallery background-left">
+    <div class="framed-photo photo-1 fade-in-on-scroll">
+      <img src="image/film/film1.png" alt="展示写真1">
+    </div>
+    <div class="framed-photo photo-2 fade-in-on-scroll">
+      <img src="image/film/film2.png" alt="展示写真2">
+    </div>
+        <div class="framed-photo photo-3 fade-in-on-scroll">
+      <img src="image/film/film3.png" alt="展示写真3">
+    </div>
+        <div class="framed-photo photo-4 fade-in-on-scroll">
+      <img src="image/film/film4.png" alt="展示写真4">
+    </div>
+  </div>
+
+  <!-- 右背景エリア -->
+  <div class="about-gallery background-right">
+    <div class="framed-photo photo-5 fade-in-on-scroll">
+      <img src="image/film/film5.png" alt="展示写真5">
+    </div>
+    <div class="framed-photo photo-6 fade-in-on-scroll">
+      <img src="image/film/film6.png" alt="展示写真6">
+    </div>
+        <div class="framed-photo photo-7 fade-in-on-scroll">
+      <img src="image/film/film7.png" alt="展示写真7">
+    </div>
+        <div class="framed-photo photo-8 fade-in-on-scroll">
+      <img src="image/film/film8.png" alt="展示写真8">
+    </div>
+  </div>
+<br>
+<br>
+  </section>
+
+</div>
+</div>
+</div>
+
+<script>
+// 全てのStrengthボタンにイベント付与
+  document.querySelectorAll('.strength-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const popupId = button.getAttribute('data-popup');
+      document.getElementById(popupId).style.display = 'flex';
+    });
+  });
+
+  // 全ての閉じるボタン
+  document.querySelectorAll('.close-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.parentElement.parentElement.style.display = 'none';
+    });
+  });
+
+  // オーバーレイクリックで閉じる
+  document.querySelectorAll('.popup-overlay').forEach(overlay => {
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) {
+        overlay.style.display = 'none';
+      }
+    });
+  });
+
+
+
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const targets = document.querySelectorAll(".fade-in-on-scroll");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    targets.forEach((target) => observer.observe(target));
+  });
+
+// 初期はメニューリンクをtab不可に
+fullMenu.querySelectorAll('a').forEach(a => a.tabIndex = -1);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  });
+
+  document.querySelectorAll('.fade-in-on-scroll').forEach((el) => {
+    observer.observe(el);
+  });
+
+  // 開く
+  document.querySelectorAll('.strength-button').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const popupId = this.dataset.popup;
+      document.getElementById(popupId).style.display = 'block';
+    });
+  });
+
+  // 閉じる
+  document.querySelectorAll('.close-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      this.closest('.popup-overlay').style.display = 'none';
+    });
+  });
+
+  // 背景クリックで閉じる
+  document.querySelectorAll('.popup-overlay').forEach(overlay => {
+    overlay.addEventListener('click', function (e) {
+      if (e.target === this) {
+        this.style.display = 'none';
+      }
+    });
+  });
+</script>
+  </main>
+</body>
+</html>
