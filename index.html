@@ -540,8 +540,8 @@
 .close-btn {
   position: absolute;
   top: 0.5rem;
-  right: 1rem;
-  font-size: 1.5rem;
+  right: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
 }
 
@@ -602,7 +602,27 @@ html, body {
   z-index: 20;
 }
 
+  .hero-sp-image {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-sp-image {
+    display: block;
+    margin-top: 24px;
+    text-align: center;
+  }
+
+
+.hero-sp-image img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+  }
+}
   </style>
+
+  
 </head>
 <body>
   <div class="everythingexceptforfooter">
@@ -621,8 +641,12 @@ html, body {
   <!-- ファーストビュー表紙 -->
     <section class="section first-view">
 <br>
-<h1 class="title">Nanako Shimizu
-</h1>
+<h1 class="title">Nanako Shimizu</h1>
+
+    <div class="hero-sp-image">
+    <img src="image/hero-sp.png" alt="Hero image for mobile">
+  </div>
+
 <br>
 <br>
 <br>
@@ -678,8 +702,7 @@ html, body {
       <div class="work-info">
         <h3 class="proti">Shimizu Nanako Portfolio</h3>
         <p>このサイトはスクラッチでコーディングしています。
-成果物を並べるだけでなく、採用担当の方が私のスキルや考え方、人となりをイメージしやすいような構成やデザインを心がけました。
-ディティールから自分の価値観や仕事への姿勢がさりげなく伝われば嬉しいです。</p>
+成果物を並べるだけでなく、採用担当の方が私のスキルや考え方、人となりをイメージしやすいような構成やデザインを心がけました。</p>
       </div>
 
     </div>
@@ -776,7 +799,7 @@ and i believe that we can enjoy all situation, even when it’s tough or seems n
   <div class="popup-content">
     <span class="close-btn">&times;</span>
     <h3 class="strength">Communication</h3>
-    <p class="jp">私は人と話すことが大好きで、仕事においてもコミュニケーションを大切にしています。会話を通して信頼関係を築き、問題やニーズを深く理解することで、その人や課題に最も合ったデザインを提案できると考えています。</p>
+    <p class="jp">人と話すことが大好きで、仕事においてもコミュニケーションを大切にしています。会話を通して信頼関係を築き、問題やニーズを深く理解することで、その人や課題に最も合ったデザインを提案できると考えています。</p>
       <details class="en-toggle">
     <summary>English</summary>
     <p class="en">I love communication and listening to other's thoughts or stories. that is my way to build trust and get close with.this is also important to commit one's ideal or know their core needs, so that i can find the best design for them.</p>
