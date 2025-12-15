@@ -20,13 +20,13 @@
   top: 0px; /* ← ここで縦位置の調整ができる（中央 or 上固定など） */
   width: 31%; 
   z-index: -1; /* ← これで中央コンテンツより奥のレイヤーに固定 */
-  opacity: 0.9;
 }
 
 .side-image img {
   width: 100%;
   height: auto;
   display: block;
+  opacity: 0.7;
 }
 
 /* 左右の位置を完全に対称にする */
@@ -46,7 +46,7 @@
   padding: 0;
   font-family: 'Kumbh Sans', sans-serif;
   color: #666;
-  }
+}
 
 .section-wrapper {
   position: relative;
@@ -190,7 +190,7 @@
 }
 .photo-8 img {
   max-width: 200px;
-  transform: translateX(300px);
+  transform: translateX(330px);
 }
 
 .fade-in-on-scroll {
@@ -209,16 +209,29 @@
 .title {
   font-family: 'Mansalva', cursive;
   letter-spacing: 10px; /* ロゴっぽく広める */
-  font-size: 2rem; 
+  font-size: 2.2vw;
   color: #666;
   text-align: center;
 }
 .logo {
   font-family: 'Mansalva', cursive;
-  font-size: 1rem;
+  font-size: 1.1vw;
   color: #666; 
   text-align: center;
   letter-spacing: 1px;
+  opacity: 0.85;
+}
+/* 📱 スマホ用 */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.4rem;   /* ← 主役だけど控えめ */
+    letter-spacing: 6px; /* ← 重要：広すぎ防止 */
+  }
+
+  .logo {
+    font-size: 0.9rem;   /* ← サブ感を出す */
+    letter-spacing: 1px;
+  }
 }
   .first-icon {
   left: 50%;
@@ -232,7 +245,6 @@
 }
 .book-container {
   position: relative; /* レイヤー分離のために必要 */
-  z-index: 10; /* 背景より上に */
   max-width: 500px;
   margin: 0 auto;
   background-image: 
@@ -244,7 +256,6 @@
 }
 .book-container2 {
   position: relative; /* レイヤー分離のために必要 */
-  z-index: 10; /* 背景より上に */
   max-width: 500px;
   margin: 0 auto;
   background-image: 
@@ -547,9 +558,22 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+.site-footer {
+  width: 100vw;
+  padding: 2rem 1rem;
+  text-align: center;
+
+  background: #70624f;
+  color: #c8c8c8;
+
+  position: relative;
+  z-index: 20;
+}
+
   </style>
 </head>
 <body>
+  <div class="everythingexceptforfooter">
   <!-- 左右の固定背景写真 -->
 <div class="side-image left-side">
   <img src="image/irasuto_left.png" alt="左の背景画像">
@@ -602,7 +626,7 @@ html, body {
     <div class="work-card">
       <img src="image/mockup/1.png" alt="Work 1" />
       <div class="work-info">
-        <h4 class="proti">町家不動産</h4>
+        <h4 class="proti">町家不動産 Website</h4>
         <p>町家不動産様のWEBサイトのデザイン、構築をWebflowにて制作しました。
           アットホームで町に寄り添った温かい雰囲気と金沢の風情が伝わるWebサイトを目指しました。</p>
       </div>
@@ -621,7 +645,9 @@ html, body {
       <img src="image/mockup/3.png" alt="Work 3" />
       <div class="work-info">
         <h3 class="proti">Shimizu Nanako Portfolio</h3>
-        <p>Short description of the project 3.</p>
+        <p>このサイトはスクラッチでコーディングしています。
+成果物を並べるだけでなく、採用担当の方が私のスキルや考え方、人となりをイメージしやすいような構成やデザインを心がけました。
+ディティールから自分の価値観や仕事への姿勢がさりげなく伝われば嬉しいです。</p>
       </div>
 
     </div>
@@ -639,7 +665,7 @@ html, body {
   <div class="chapter-line-alt">
     <hr><span></span><hr>
   </div>
-
+</div>
     <!-- About セクション -->
 <div class="section-wrapper about-bg">
   <section class="about-section">
@@ -660,16 +686,16 @@ html, body {
       <p>I worked at an auto parts company in Japan for four years,
 where I became interested in design through my involvement in software system projects.
 
-Wanting to explore further, I decided to go abroad to study design and learn how to live independently.
+I decided to go abroad to study design and learn how to live independently.
 
 I value open communication as a way to connect deeply with others and build trust.
-and i believe that we can enjoy all situation, even when it’s tough or seems negative, our mindset can turn difficulties into fun experiences or things can learn from somehow.
+and i believe that we can enjoy all situation, even when it’s tough or seems negative, our mindset can turn difficulties into fun or things can learn from.
 
         </p>
   
-        <p>How others describe me：extravert / calm<br>
-           Interests：Talking / Reading / Running / Camera<br>
-           Good at：English conversation / Excel</p>
+        <p>  -   How others describe me：extravert / calm<br>
+             -   Interests：Talking / Reading / Running / Camera<br>
+             -   Good at：English conversation / Excel</p>
       </div> 
 
 <br>
@@ -705,8 +731,9 @@ and i believe that we can enjoy all situation, even when it’s tough or seems n
 <div id="popup1" class="popup-overlay">
   <div class="popup-content">
     <span class="close-btn">&times;</span>
-    <h3>Communication</h3>
-    <p>I love communication and listening to other's thoughts or stories. that is my way to build trust and get close with.
+    <h3>Communication (コミュニケーション)</h3>
+    <p>私は人と話すことが大好きで、仕事においてもコミュニケーションを大切にしています。会話を通して信頼関係を築き、問題やニーズを深く理解することで、その人や課題に最も合ったデザインを提案できると考えています。
+      I love communication and listening to other's thoughts or stories. that is my way to build trust and get close with.
       this is also important to commit one's ideal or know their core needs, so that i can find the best design for them.
     </p>
   </div>
@@ -715,8 +742,11 @@ and i believe that we can enjoy all situation, even when it’s tough or seems n
 <div id="popup2" class="popup-overlay">
   <div class="popup-content">
     <span class="close-btn">&times;</span>
-    <h3>Sincerity</h3>
-    <p>For all situation, i am serious and trying to be humble. I listen to other's opinions or advices with respects even though it is opposite to mine or hard to accept or understand.
+    <h3>Sincerity (誠実さ)</h3>
+    <p>どんな場面でも、真面目に向き合い、謙虚でいることを大切にしています。
+自分と異なる意見や、理解が難しい考えや価値観、文化であっても、相手を尊重しながら耳を傾け、受け止めるよう心がけています。
+新しい視点や価値観を知る良い機会であり、自分自身を成長させるために必要な姿勢だと考えています。
+      For all situation, i am serious and trying to be humble. I listen to other's opinions or advices with respects even though it is opposite to mine or hard to accept or understand.
       i will always be considerate and supportive for them. this will be helpful to me too for knowing new perspect or learning new values to improve myself.</p>
   </div>
 </div>
@@ -724,10 +754,13 @@ and i believe that we can enjoy all situation, even when it’s tough or seems n
 <div id="popup3" class="popup-overlay">
   <div class="popup-content">
     <span class="close-btn">&times;</span>
-    <h3>Curiosity</h3>
-    <p>I'm willing to try new things. I have a big sense of curiosity and it makes me get out from comfortzone.
+    <h3>Curiosity (好奇心)</h3>
+    <p>好奇心が強く、新しいことに挑戦するのが好きです。
+理系ではないのにITプロジェクトに関わったり、英語が話せない状態で海外に挑戦した経験もあります。
+コンフォートゾーンから抜けることは、日々を充実させ、楽しいものにしてくれると感じています。
+      I'm willing to try new things. I have a big sense of curiosity and it makes me get out from comfortzone.
       I tried to engage into IT projects even i was not majoring in science. I went to abroad to study even i can not speak English well at the time.
-      but i know trying new things always gives me tips to live stronger and happier even more. and it makes me someone better than yesterday' myself. 
+      but i know trying new things always gives me tips to live stronger and wisier even more. and it makes my day fulfill and just fun.
     </p>
   </div>
 </div>
@@ -811,11 +844,15 @@ and i believe that we can enjoy all situation, even when it’s tough or seems n
 <br>
 <br>
   </section>
+  </div>
+  </div>
 
-</div>
-</div>
-</div>
 
+  <section class="footer-section">
+  <footer class="site-footer">
+    <p>© 2025 Nanako Shimizu</p>
+  </footer>
+  </section>
 <script>
 // 全てのStrengthボタンにイベント付与
   document.querySelectorAll('.strength-button').forEach(button => {
