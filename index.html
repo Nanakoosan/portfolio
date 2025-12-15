@@ -215,7 +215,7 @@
 }
 .logo {
   font-family: 'Mansalva', cursive;
-  font-size: 1rem;
+  font-size: clamp(0.6rem, 1vw, 1rem);
   color: #666; 
   text-align: center;
   letter-spacing: 1px;
@@ -922,89 +922,48 @@ and i believe that we can enjoy all situation, even when it’s tough or seems n
   </div>
   </footer>
   </section>
-<script>
-// 全てのStrengthボタンにイベント付与
-  document.querySelectorAll('.strength-button').forEach(button => {
-    button.addEventListener('click', () => {
-      const popupId = button.getAttribute('data-popup');
-      document.getElementById(popupId).style.display = 'flex';
-    });
-  });
-
-  // 全ての閉じるボタン
-  document.querySelectorAll('.close-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.parentElement.parentElement.style.display = 'none';
-    });
-  });
-
-  // オーバーレイクリックで閉じる
-  document.querySelectorAll('.popup-overlay').forEach(overlay => {
-    overlay.addEventListener('click', e => {
-      if (e.target === overlay) {
-        overlay.style.display = 'none';
-      }
-    });
-  });
-
-
-
-
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const targets = document.querySelectorAll(".fade-in-on-scroll");
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, {
-      threshold: 0.2
-    });
-
-    targets.forEach((target) => observer.observe(target));
-  });
-
-// 初期はメニューリンクをtab不可に
-fullMenu.querySelectorAll('a').forEach(a => a.tabIndex = -1);
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  });
-
-  document.querySelectorAll('.fade-in-on-scroll').forEach((el) => {
-    observer.observe(el);
-  });
-
-  // 開く
-  document.querySelectorAll('.strength-button').forEach(btn => {
-    btn.addEventListener('click', function () {
-      const popupId = this.dataset.popup;
-      document.getElementById(popupId).style.display = 'block';
-    });
-  });
-
-  // 閉じる
-  document.querySelectorAll('.close-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
-      this.closest('.popup-overlay').style.display = 'none';
-    });
-  });
-
-  // 背景クリックで閉じる
-  document.querySelectorAll('.popup-overlay').forEach(overlay => {
-    overlay.addEventListener('click', function (e) {
-      if (e.target === this) {
-        this.style.display = 'none';
-      }
-    });
-  });
-</script>
   </main>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ===== Fade in on scroll ===== */
+  const fadeTargets = document.querySelectorAll(".fade-in-on-scroll");
+
+  const fadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  fadeTargets.forEach(el => fadeObserver.observe(el));
+
+  /* ===== Strength popup ===== */
+  document.querySelectorAll(".strength-button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.popup;
+      document.getElementById(id).style.display = "flex";
+    });
+  });
+
+  document.querySelectorAll(".close-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      btn.closest(".popup-overlay").style.display = "none";
+    });
+  });
+
+  document.querySelectorAll(".popup-overlay").forEach(overlay => {
+    overlay.addEventListener("click", e => {
+      if (e.target === overlay) {
+        overlay.style.display = "none";
+      }
+    });
+  });
+
+});
+
+</script>
+  
 </body>
 </html>
