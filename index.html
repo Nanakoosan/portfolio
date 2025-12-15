@@ -365,6 +365,13 @@
       scroll-behavior: smooth;
     }
 
+.strength{
+  font-family:'Mansalva', cursive;
+  font-size: 1.5rem;
+  color: #666;
+}
+
+
 
     /* スマホ対応 */
     @media (max-width: 768px) {
@@ -424,6 +431,29 @@
   text-align: left;
   line-height: 2; /* 行間ゆったり */
   font-size: 1.05rem;
+}
+.en-toggle summary {
+  cursor: pointer;
+  color: #978433;
+  font-size: 1rem;
+  font-family: 'Mansalva',cursive;
+  margin-top: 0.5rem;
+  list-style: none;
+}
+
+.en-toggle summary::after {
+  content: " +";
+}
+
+.en-toggle[open] summary::after {
+  content: " −";
+}
+
+.en-toggle .en {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #888;
+  line-height: 1.6;
 }
 
 
@@ -499,10 +529,12 @@
 }
 .popup-content {
   background: #fff;
-  max-width: 400px;
+  width: fit-content;      /* ← 中身に合わせて横幅が伸びる */
+  max-width: 600px;        /* ← 広がりすぎ防止 */
+  min-width: 320px;
   margin: 10% auto;
   padding: 2rem;
-  border-radius: 12px;
+  border-radius: 0px;
   position: relative;
 }
 .close-btn {
@@ -683,21 +715,33 @@ html, body {
 <p class="year-label">Summary</p>
 <div class="about-content">
 
-      <p>I worked at an auto parts company in Japan for four years,
+      <p class="jp">日本の自動車部品メーカーで4年間働き、ソフトウェアシステムのプロジェクトに関わる中で、次第にデザインの仕事に興味を持つようになりました。
+デザインを学ぶこと、そして海外で自分の力で生活する経験をしたいと思い、カナダへ渡ることを決めました。
+
+人と話し、考えや背景を共有することを大切にしており、そこから信頼関係が生まれると感じています。
+また、どんな状況でも前向きに捉え、困難な経験からも楽しさや学びを見つけていきたいと考えています。</p>
+  
+        <p class="jp">
+          -  人から言われる印象：外向的 / おおらか<br> 
+          -  好きなこと：人と話すこと / 読書 / ランニング / カメラ<br> 
+          -  得意なこと：英会話 / Excel</p>
+
+  <details class="en-toggle">
+    <summary>English</summary>
+    <p class="en">
+I worked at an auto parts company in Japan for four years,
 where I became interested in design through my involvement in software system projects.
 
 I decided to go abroad to study design and learn how to live independently.
 
 I value open communication as a way to connect deeply with others and build trust.
-and i believe that we can enjoy all situation, even when it’s tough or seems negative, our mindset can turn difficulties into fun or things can learn from.
+and i believe that we can enjoy all situation, even when it’s tough or seems negative, our mindset can turn difficulties into fun or things can learn from.</p>
 
-        </p>
-  
-        <p>  -   How others describe me：extravert / calm<br>
+        <p class="en">  -   How others describe me：extravert / calm<br>
              -   Interests：Talking / Reading / Running / Camera<br>
              -   Good at：English conversation / Excel</p>
-      </div> 
-
+ </details>
+            </div> 
 <br>
     <!-- 強み -->
 <p class="year-label">Strength</p>
@@ -731,34 +775,33 @@ and i believe that we can enjoy all situation, even when it’s tough or seems n
 <div id="popup1" class="popup-overlay">
   <div class="popup-content">
     <span class="close-btn">&times;</span>
-    <h3>Communication (コミュニケーション)</h3>
-    <p>私は人と話すことが大好きで、仕事においてもコミュニケーションを大切にしています。会話を通して信頼関係を築き、問題やニーズを深く理解することで、その人や課題に最も合ったデザインを提案できると考えています。
-      I love communication and listening to other's thoughts or stories. that is my way to build trust and get close with.
-      this is also important to commit one's ideal or know their core needs, so that i can find the best design for them.
-    </p>
+    <h3 class="strength">Communication</h3>
+    <p class="jp">私は人と話すことが大好きで、仕事においてもコミュニケーションを大切にしています。会話を通して信頼関係を築き、問題やニーズを深く理解することで、その人や課題に最も合ったデザインを提案できると考えています。</p>
+      <details class="en-toggle">
+    <summary>English</summary>
+    <p class="en">I love communication and listening to other's thoughts or stories. that is my way to build trust and get close with.this is also important to commit one's ideal or know their core needs, so that i can find the best design for them.</p>
   </div>
 </div>
 
 <div id="popup2" class="popup-overlay">
   <div class="popup-content">
     <span class="close-btn">&times;</span>
-    <h3>Sincerity (誠実さ)</h3>
-    <p>どんな場面でも、真面目に向き合い、謙虚でいることを大切にしています。
-自分と異なる意見や、理解が難しい考えや価値観、文化であっても、相手を尊重しながら耳を傾け、受け止めるよう心がけています。
-新しい視点や価値観を知る良い機会であり、自分自身を成長させるために必要な姿勢だと考えています。
-      For all situation, i am serious and trying to be humble. I listen to other's opinions or advices with respects even though it is opposite to mine or hard to accept or understand.
-      i will always be considerate and supportive for them. this will be helpful to me too for knowing new perspect or learning new values to improve myself.</p>
+    <h3 class="strength">Sincerity</h3>
+    <p class="jp">どんな場面でも、真面目に向き合い、謙虚でいることを大切にしています。自分と異なる意見や、理解が難しい考えや価値観、文化であっても、相手を尊重しながら耳を傾け、受け止めるよう心がけています。新しい視点や価値観を知る良い機会であり、自分自身を成長させるために必要な姿勢だと考えています。</p>
+      <details class="en-toggle">
+    <summary>English</summary>
+    <p class="en">For all situation, i am serious and trying to be humble. I listen to other's opinions or advices with respects even though it is opposite to mine or hard to accept or understand.i will always be considerate and supportive for them. this will be helpful to me too for knowing new perspect or learning new values to improve myself.</p>
   </div>
 </div>
 
 <div id="popup3" class="popup-overlay">
   <div class="popup-content">
     <span class="close-btn">&times;</span>
-    <h3>Curiosity (好奇心)</h3>
-    <p>好奇心が強く、新しいことに挑戦するのが好きです。
-理系ではないのにITプロジェクトに関わったり、英語が話せない状態で海外に挑戦した経験もあります。
-コンフォートゾーンから抜けることは、日々を充実させ、楽しいものにしてくれると感じています。
-      I'm willing to try new things. I have a big sense of curiosity and it makes me get out from comfortzone.
+    <h3 class="strength">Curiosity</h3>
+    <p class="jp">好奇心が強く、新しいことに挑戦するのが好きです。理系ではないのにITプロジェクトに関わったり、英語が話せない状態で海外に挑戦した経験もあります。コンフォートゾーンから抜けることは、日々を充実させ、楽しいものにしてくれると感じています。</p>
+      <details class="en-toggle">
+    <summary>English</summary>
+    <p class="en">I'm willing to try new things. I have a big sense of curiosity and it makes me get out from comfortzone.
       I tried to engage into IT projects even i was not majoring in science. I went to abroad to study even i can not speak English well at the time.
       but i know trying new things always gives me tips to live stronger and wisier even more. and it makes my day fulfill and just fun.
     </p>
