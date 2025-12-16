@@ -334,6 +334,55 @@
       transform: translateY(-5px);
     }
 
+.work-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.work-modal.active {
+  display: flex;
+}
+
+.work-modal-content {
+  background: #fff;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.work-hero {
+  width: 100%;
+  max-height: 60vh;          /* ← ポップアップ内で大きくなりすぎない */
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.work-hero img {
+  width: 100%;
+  height: auto;
+  max-height: 60vh;
+  object-fit: contain;       /* ← 画像全体を収める（切れない） */
+  display: block;
+}
+
 
 .about-photo-wrapper {
   display: flex;
@@ -711,7 +760,7 @@ html, body {
     <img src="image/icon/first-icon.png" alt="first icon" />
   </div>
 
-  <p1 class="logo">Design that pulls you in</p1>
+  <p class="logo">Design that pulls you in</p>
 
 
     </section>
@@ -729,7 +778,7 @@ html, body {
 
     <h2 class="section-title">My Works</h2>
   <div class="works-grid">
-    <div class="work-card">
+    <div class="work-card" data-modal="work1">
       <img src="image/mockup/1.png" alt="Work 1" />
       <div class="work-info">
         <h4 class="proti">町家不動産 Website</h4>
@@ -737,7 +786,7 @@ html, body {
           アットホームで町に寄り添った温かい雰囲気と金沢の風情が伝わるWebサイトを目指しました。</p>
       </div>
     </div>
-    <div class="work-card">
+    <div class="work-card" data-modal="work2">
       <img src="image/mockup/2.png" alt="Work 2" />
       <div class="work-info">
         <h4 class="proti">LARTH 節電ガラスコート LP
@@ -747,15 +796,19 @@ html, body {
            アットホームで町に寄り添った優しい雰囲気と金沢の風情が伝わるWebサイトを目指しました。</p>
       </div>
     </div>
-    <div class="work-card">
+    <div class="work-card" data-modal="work3">
       <img src="image/mockup/3.png" alt="Work 3" />
       <div class="work-info">
         <h3 class="proti">Shimizu Nanako Portfolio</h3>
         <p>このサイトはスクラッチでコーディングしています。
 成果物を並べるだけでなく、採用担当の方が私のスキルや考え方、人となりをイメージしやすいような構成やデザインを心がけました。</p>
       </div>
-
     </div>
+</div>
+</div>
+  </div>
+
+
   </section>
 
   <div class="background-left">
@@ -764,7 +817,6 @@ html, body {
   <div class="background-right">
     <!-- 他の装飾やSVGなど -->
   </div>
-</div>
 
   <div class="chapter-header">
   <div class="chapter-line-alt">
@@ -788,16 +840,32 @@ html, body {
 <p class="year-label">Summary</p>
 <div class="about-content">
 
-      <p class="jp">日本の自動車部品メーカーで4年間働き、ソフトウェアシステムのプロジェクトに関わる中で、次第にデザインの仕事に興味を持つようになりました。
-デザインを学ぶこと、そして海外で自分の力で生活する経験をしたいと思い、カナダへ渡ることを決めました。
+      <p class="jp">気づいたら、4年間も日本の自動車部品メーカーにいました。
+ソフトウェアのプロジェクトに関わりながら、「こんなアプリ誰が使うんだ？」「てか車に興味ない」という違和感をじわじわ育て、最終的にデザインに逃げ…いや、惹かれました。
 
-人と話し、考えや背景を共有することを大切にしており、そこから信頼関係が生まれると感じています。
-また、どんな状況でも前向きに捉え、困難な経験からも楽しさや学びを見つけていきたいと考えています。</p>
+ちゃんとした理由があったかというと怪しくて、
+「英語を伸ばしたい」
+「社会人という面倒から一旦自由になりたい」
+「海外で生活するとかかっこよくない？」
+そのへんの衝動が混ざり合った結果、カナダにいました。
+
+基本的に人と話すのが大好きで、
+雑談から人生観に関する深い話までなんでも。会話を通して人と距離が縮まる瞬間がいちばん楽しいタイプです。
+一方で、急に一人になって本を読んだり、走ったり、カメラを持って徘徊したりもします。
+エネルギーが外に向いたり内に向いたりと極端。
+
+意識高いと思いきや実は怠け者で、
+やる気がないときはびっくりするほど動きません。
+ただ、「もうどうにでもなれ」みたいな状況になると、
+なぜか面白がって踏ん張れる不思議な性質があります。
+
+大怪我をしても刺激が欲しくて海外生活を続けてしまうあたり、
+たぶんクレイジーで、しぶといです。</p>
   
         <p class="jp">
-          -  人から言われる印象：外向的 / おおらか<br> 
-          -  好きなこと：人と話すこと / 読書 / ランニング / カメラ<br> 
-          -  得意なこと：英会話 / Excel</p>
+          -  人から言われる印象：外向的っぽいけど大人数は無理 / 強そうに見られるけど、だいぶゆるい<br> 
+          -  好きなこと：人との深い会話 / 本屋 / 同じドラマを何度も見る<br> 
+          -  得意なこと：英語での雑談 / Excel</p>
 
   <details class="en-toggle">
     <summary>English</summary>
@@ -989,8 +1057,44 @@ and i believe that we can enjoy all situation, even when it’s tough or seems n
 </div>
 
 </div>
-  </div>
+</main>
+</div>
 
+ <!-- Worksのポップアップ -->
+<div class="work-modal" id="work1">
+
+  <div class="work-modal-content">
+    <button class="modal-close">×</button>
+
+    <!-- Hero image -->
+    <div class="work-hero">
+      <img src="image/mockup/work1-top.jpeg" alt="">
+    </div>
+
+    <!-- Meta -->
+    <div class="work-meta">
+      <p><strong>制作期間：</strong>2週間</p>
+      <p><strong>担当範囲：</strong>デザイン / コーディング</p>
+      <p><strong>使用ツール：</strong>Figma / Webflow</p>
+      <p><strong>制作形態：</strong>個人制作（クライアント対応含む）</p>
+    </div>
+
+    <!-- Description -->
+    <div class="work-description">
+      <p><strong>制作背景</strong></p>
+      <p>〇〇という課題があり…</p>
+
+      <p><strong>工夫した点</strong></p>
+      <p>〇〇という課題があり…</p>
+
+    </div>
+
+    <!-- Scroll image -->
+    <div class="work-scroll-preview">
+      <img src="images/work1-fullpage.jpg" alt="">
+    </div>
+</div>
+</div>
 
 
   <section class="footer-section">
@@ -1001,13 +1105,12 @@ and i believe that we can enjoy all situation, even when it’s tough or seems n
   </div>
   </footer>
   </section>
-  </main>
+  
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ===== Fade in on scroll ===== */
   const fadeTargets = document.querySelectorAll(".fade-in-on-scroll");
-
   const fadeObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1015,7 +1118,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, { threshold: 0.2 });
-
   fadeTargets.forEach(el => fadeObserver.observe(el));
 
   /* ===== Strength popup ===== */
@@ -1037,6 +1139,20 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.target === overlay) {
         overlay.style.display = "none";
       }
+    });
+  });
+
+  /* ===== Works modal ===== */
+  document.querySelectorAll('.work-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const modalId = card.dataset.modal;
+      document.getElementById(modalId)?.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.modal-close').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.work-modal')?.classList.remove('active');
     });
   });
 
