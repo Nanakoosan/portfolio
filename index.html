@@ -77,6 +77,22 @@
   z-index: 1;
 }
 
+.contact-section
+ {
+  position: relative;
+  padding: 1rem;
+  min-height: auto;
+  height: auto;
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  z-index: 1;
+  margin-bottom: 10rem;
+}
+.section-wrapper.contact-bg {
+  min-height: unset;
+}
+
 .chapter-line-alt {
   display: flex;
   align-items: center;
@@ -602,8 +618,38 @@ html, body {
   z-index: 20;
 }
 
+
+.contact-text {
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.contact-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #666;
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #666;
+  color: #fff;
+}
+
+.contact-email {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: #888;
+}
+
   .hero-sp-image {
   display: none;
+  width: 100%;
+  color: antiquewhite;
 }
 
 @media screen and (max-width: 768px) {
@@ -623,6 +669,7 @@ html, body {
     color: antiquewhite;
   }
 }
+
   </style>
 
   
@@ -908,11 +955,36 @@ and i believe that we can enjoy all situation, even when it’s tough or seems n
       <img src="image/film/film8.png" alt="展示写真8">
     </div>
   </div>
-<br>
-<br>
+  </div>
+  </div>
+
+</section>
+
+    <!-- Contact セクション -->
+
+         <div class="book-container">
+
+<div class="section-wrapper contact-bg">
+  <section class="contact-section">
+    <h2 class="section-title">Contact</h2>
+
+    <p class="contact-text">
+      お気軽にご連絡ください！<br>
+      Feel free to meggage if you’d like to work together or just say hello.
+    </p>
+
+    <a
+      href="mailto:shimizu.2330@gmail.com"
+      class="contact-button"
+    >
+      Send me an email
+    </a>
   </section>
+</div>
+
+</div>
   </div>
-  </div>
+
 
 
   <section class="footer-section">
