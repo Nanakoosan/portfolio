@@ -347,6 +347,32 @@
 .work-modal.active {
   display: flex;
 }
+.work-summary {
+  margin: 3rem 0;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  border-top: 1px solid #e5e5e5;
+}
+.summary-label {
+  font-size: 0.85rem;
+  color: #8a8252; 
+  letter-spacing: 0.05em;
+}
+
+.summary-content p {
+  margin: 0 0 0.2rem 0;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: #666;
+}
+
+.summary-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid #e5e5e5;
+}
 
 .work-modal-content {
   background: #fff;
@@ -610,17 +636,6 @@
   cursor: pointer;
 }
 
-.scroll-indicator {
-  position: absolute;
-  bottom: -40px; /* 外枠にギリギリかぶる */
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 3; /* 外枠より上にくるように */
-}
-
 .scroll-text {
   font-size: 0.9rem;
   color: #555;
@@ -695,30 +710,6 @@ html, body {
   margin-top: 1.5rem;
   font-size: 0.8rem;
   color: #888;
-}
-
-  .hero-sp-image {
-  display: none;
-  width: 100%;
-  color: antiquewhite;
-}
-
-@media screen and (max-width: 768px) {
-  .hero-sp-image {
-    display: block;
-    margin-top: 5px;
-    text-align: center;
-    z-index: 20;
-  }
-
-
-.hero-sp-image img {
-    width: 100%;
-    max-width: auto;
-    height: auto;
-    opacity: 0.7;
-    color: antiquewhite;
-  }
 }
 
   </style>
@@ -841,7 +832,7 @@ html, body {
 <div class="about-content">
 
       <p class="jp">気づいたら、4年間も日本の自動車部品メーカーにいました。
-ソフトウェアのプロジェクトに関わりながら、「こんなアプリ誰が使う？」「車に興味ない」という違和感をじわじわ育て、最終的にデザインに逃げ…いや、惹かれました。
+ソフトウェアのプロジェクトに関わりながら、「こんなアプリ誰が使うんだ？」「車に興味ない」という違和感をじわじわ育て、最終的にデザインに逃げ…いや、惹かれました。
 
 ちゃんとした理由があったかというと怪しくて、
 「英語を伸ばしたい」
@@ -1061,7 +1052,7 @@ and i believe that we can enjoy all situation, even when it’s tough or seems n
 </main>
 </div>
 
- <!-- Worksのポップアップ -->
+ <!-- Works1のポップアップ -->
 <div class="work-modal" id="work1">
 
   <div class="work-modal-content">
@@ -1073,37 +1064,225 @@ and i believe that we can enjoy all situation, even when it’s tough or seems n
     </div>
 
     <!-- Meta -->
-    <div class="work-meta">
-      <p><strong>制作期間：</strong>2週間</p>
-      <p><strong>担当範囲：</strong>デザイン / コーディング</p>
-      <p><strong>使用ツール：</strong>Figma / Webflow</p>
-      <p><strong>制作形態：</strong>個人制作（クライアント対応含む）</p>
-    </div>
+<div class="work-summary">
 
-    <!-- Description -->
-    <div class="work-description">
-      <p><strong>制作背景</strong></p>
-      <p>〇〇という課題があり…</p>
+      <div class="summary-row">
+        <div class="summary-label">サマリー</div>
+           <div class="summary-content">
+             <p>会社の信頼性を高め、初めて訪れる人にも安心感を持ってもらうことを目的に制作したWebサイト。事業内容が直感的に伝わる構成と、地域に寄り添った温かいトーンを意識しました。</p>
+           </div>
+      </div>
 
-      <p><strong>工夫した点</strong></p>
-      <p>〇〇という課題があり…</p>
+      <div class="summary-row">
+        <div class="summary-label">担当範囲</div>
+           <div class="summary-content">
+             <p>デザイン制作、コーディング</p>
+           </div>
+      </div>
 
-    </div>
+      <div class="summary-row">
+        <div class="summary-label">使用ツール</div>
+           <div class="summary-content">
+             <p>Visual Studio Code / Lottie Animation</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">ターゲット</div>
+           <div class="summary-content">
+             <p>20〜50代の引越しを検討中のご夫妻。</p>
+             <p>ご近所にお住まいの方々。</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">課題</div>
+           <div class="summary-content">
+             <p>ホームページが存在せず、会社としての信頼性や事業内容が十分に伝わっていなかった。</p>
+             <p>また、ブログやニュースなどの発信の場がなく、事業が稼働していることをユーザーに伝えづらい状態だった。</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">工夫した点</div>
+           <div class="summary-content">
+             <p>金沢らしさと、街に寄り添った温かい雰囲気が伝わるように色味やイメージを選定しました。</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">制作期間</div>
+           <div class="summary-content">
+             <p>1.5ヶ月</p>
+           </div>
+      </div>
+
+   </div> <!--work-summary-->
 
     <!-- Scroll image -->
     <div class="work-scroll-preview">
-      <img src="images/work1-fullpage.jpg" alt="">
+      <img src="images/work1-fullpage.jpg" alt=""></div>
+
+      </div> <!--work-modal-content-->
+</div> <!--work-modal-work1-->
+
+
+ <!-- Works2のポップアップ -->
+<div class="work-modal" id="work2">
+
+  <div class="work-modal-content">
+    <button class="modal-close">×</button>
+
+    <!-- Hero image -->
+    <div class="work-hero">
+      <img src="image/mockup/work2-top.jpeg" alt="">
     </div>
-</div>
-</div>
+
+    <!-- Meta -->
+<div class="work-summary">
+
+      <div class="summary-row">
+        <div class="summary-label">サマリー</div>
+           <div class="summary-content">
+             <p>会社の信頼性を高め、初めて訪れる人にも安心感を持ってもらうことを目的に制作したWebサイト。事業内容が直感的に伝わる構成と、地域に寄り添った温かいトーンを意識しました。</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-label">担当範囲</div>
+           <div class="summary-content">
+             <p>デザイン制作、コーディング</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-label">使用ツール</div>
+           <div class="summary-content">
+             <p>Visual Studio Code / Lottie Animation</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">ターゲット</div>
+           <div class="summary-content">
+             <p>20〜50代の引越しを検討中のご夫妻。</p>
+             <p>ご近所にお住まいの方々。</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">課題</div>
+           <div class="summary-content">
+             <p>ホームページが存在せず、会社としての信頼性や事業内容が十分に伝わっていなかった。</p>
+             <p>また、ブログやニュースなどの発信の場がなく、事業が稼働していることをユーザーに伝えづらい状態だった。</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">工夫した点</div>
+           <div class="summary-content">
+             <p>金沢らしさと、街に寄り添った温かい雰囲気が伝わるように色味やイメージを選定しました。</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">制作期間</div>
+           <div class="summary-content">
+             <p>1.5ヶ月</p>
+           </div>
+      </div>
+
+   </div> <!--work-summary-->
+   
+
+    <!-- Scroll image -->
+    <div class="work-scroll-preview">
+      <img src="images/work1-fullpage.jpg" alt=""></div>
+
+      </div> <!--work-modal-content-->
+</div> <!--work-modal-work2-->
+
+ <!-- Works3のポップアップ -->
+<div class="work-modal" id="work3">
+
+  <div class="work-modal-content">
+    <button class="modal-close">×</button>
+
+    <!-- Hero image -->
+    <div class="work-hero">
+      <img src="image/mockup/work3-top.jpeg" alt="">
+    </div>
+
+    <!-- Meta -->
+<div class="work-summary">
+
+      <div class="summary-row">
+        <div class="summary-label">サマリー</div>
+           <div class="summary-content">
+             <p>会社の信頼性を高め、初めて訪れる人にも安心感を持ってもらうことを目的に制作したWebサイト。事業内容が直感的に伝わる構成と、地域に寄り添った温かいトーンを意識しました。</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-label">担当範囲</div>
+           <div class="summary-content">
+             <p>デザイン制作、コーディング</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-label">使用ツール</div>
+           <div class="summary-content">
+             <p>Visual Studio Code / Lottie Animation</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">ターゲット</div>
+           <div class="summary-content">
+             <p>20〜50代の引越しを検討中のご夫妻。</p>
+             <p>ご近所にお住まいの方々。</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">課題</div>
+           <div class="summary-content">
+             <p>ホームページが存在せず、会社としての信頼性や事業内容が十分に伝わっていなかった。</p>
+             <p>また、ブログやニュースなどの発信の場がなく、事業が稼働していることをユーザーに伝えづらい状態だった。</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">工夫した点</div>
+           <div class="summary-content">
+             <p>金沢らしさと、街に寄り添った温かい雰囲気が伝わるように色味やイメージを選定しました。</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">制作期間</div>
+           <div class="summary-content">
+             <p>1.5ヶ月</p>
+           </div>
+      </div>
+
+   </div> <!--work-summary-->
+   
+
+    <!-- Scroll image -->
+    <div class="work-scroll-preview">
+      <img src="images/work1-fullpage.jpg" alt=""></div>
+
+      </div> <!--work-modal-content-->
+</div> <!--work-modal-work3-->
 
 
+
+<!--footer-->
   <section class="footer-section">
   <footer class="site-footer">
     <p>© 2025 Nanako Shimizu</p>
-        <div class="hero-sp-image">
-    <img src="image/hero-sp.png" alt="Hero image for mobile">
-  </div>
   </footer>
   </section>
   
@@ -1157,6 +1336,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+});
+document.querySelectorAll('.work-modal').forEach(modal => {
+  modal.addEventListener('click', (e) => {
+    // 背景（.work-modal）そのものをクリックしたときだけ閉じる
+    if (e.target === modal) {
+      modal.classList.remove('active');
+    }
+  });
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.work-modal.active')
+      .forEach(modal => modal.classList.remove('active'));
+  }
 });
 
 </script>
