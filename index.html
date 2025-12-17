@@ -348,10 +348,16 @@
   display: flex;
 }
 .work-summary {
-  margin: 3rem 0;
-  margin-left: 5rem;
-  margin-right: 5rem;
+  margin: 3rem auto;
+  padding: 0 5rem;
   border-top: 1px solid #e5e5e5;
+}
+/* スマホ */
+@media (max-width: 768px) {
+  .work-summary {
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+  }
 }
 .summary-label {
   font-size: 0.85rem;
