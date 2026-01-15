@@ -381,6 +381,40 @@
   background: #f7f7f7;
 }
 
+.visit-site-container {
+  text-align: center;
+  margin: 1.5rem 0 3rem 0; /* HeroImageとSummaryの間の余白 */
+}
+
+.visit-site-btn {
+  display: inline-block;
+  padding: 0.8rem 2.5rem;
+  color: #978433;
+  text-decoration: none;
+  font-family: 'Mansalva', cursive;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.visit-site-btn:hover {
+  background-color: #c6c6c6b6; /* 少し濃く */
+  transform: translateY(-2px);
+  color: #fff; /* ホバー時も白を維持 */
+}
+
+.external-icon {
+  margin-left: 8px;
+  font-size: 0.9rem;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  .visit-site-btn {
+    width: 80%; /* スマホでは押しやすく横幅を広げる */
+    padding: 1rem;
+  }
+}
+
 
 .summary-label {
   font-size: 0.85rem;
@@ -1109,6 +1143,13 @@ I strive to create seamless experiences where design and code naturally meet.
       <img src="image/mockup/work1-top.jpeg" alt="">
     </div>
 
+<div class="visit-site-container">
+  <a href="https://machiyafudosan.webflow.io/" target="_blank" rel="noopener noreferrer" class="visit-site-btn">
+    Visit Site
+    <span class="external-icon">↗</span>
+  </a>
+</div>
+
     <!-- Meta -->
 <div class="work-summary">
 
@@ -1193,6 +1234,13 @@ I strive to create seamless experiences where design and code naturally meet.
       <img src="image/mockup/work2-top.png" alt="">
     </div>
 
+    <div class="visit-site-container">
+  <a href="https://glasscoat.studio.site/" target="_blank" rel="noopener noreferrer" class="visit-site-btn">
+    Visit Site
+    <span class="external-icon">↗</span>
+  </a>
+</div>
+
     <!-- Meta -->
 <div class="work-summary">
 
@@ -1276,6 +1324,13 @@ I strive to create seamless experiences where design and code naturally meet.
     <div class="work-hero">
       <img src="image/mockup/work3-top.jpeg" alt="">
     </div>
+
+<div class="visit-site-container">
+  <a href="https://nanakoosan.github.io/portfolio/" target="_blank" rel="noopener noreferrer" class="visit-site-btn">
+    Visit Site
+    <span class="external-icon">↗</span>
+  </a>
+</div>
 
     <!-- Meta -->
 <div class="work-summary">
@@ -1443,4 +1498,3 @@ document.addEventListener('keydown', (e) => {
   
 </body>
 </html>
-
