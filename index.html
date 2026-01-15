@@ -1159,6 +1159,7 @@ I strive to create seamless experiences where design and code naturally meet.
              <p>会社の信頼性を高め、初めて訪れる人にも安心感を持ってもらうことを目的に制作したWebサイト。事業内容が直感的に伝わる構成と、地域に寄り添った温かいトーンを意識しました。</p>
            </div>
       </div>
+      
 
       <div class="summary-row">
         <div class="summary-label">担当範囲</div>
@@ -1413,25 +1414,9 @@ I strive to create seamless experiences where design and code naturally meet.
   </section>
   
 <script>
-//<!--Back to home in popup-->
-document.querySelectorAll('.back-home-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-
-    // このボタンを含むモーダルを特定
-    const modal = btn.closest('.work-modal');
-    modal.classList.remove('active');
-
-    // Works（または Home）へ戻る
-    document.querySelector('#works').scrollIntoView({
-      behavior: 'smooth'
-    });
-  });
-});
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ===== Fade in on scroll ===== */
+  /* ===== 1. Fade in on scroll ===== */
   const fadeTargets = document.querySelectorAll(".fade-in-on-scroll");
   const fadeObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -1439,14 +1424,15 @@ document.addEventListener("DOMContentLoaded", () => {
         entry.target.classList.add("visible");
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.1 }); // 少し早めに発火させる
   fadeTargets.forEach(el => fadeObserver.observe(el));
 
-  /* ===== Strength popup ===== */
+  /* ===== 2. Strength popup (About Me) ===== */
   document.querySelectorAll(".strength-button").forEach(btn => {
     btn.addEventListener("click", () => {
       const id = btn.dataset.popup;
-      document.getElementById(id).style.display = "flex";
+      const popup = document.getElementById(id);
+      if (popup) popup.style.display = "flex";
     });
   });
 
@@ -1456,44 +1442,42 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  document.querySelectorAll(".popup-overlay").forEach(overlay => {
-    overlay.addEventListener("click", e => {
-      if (e.target === overlay) {
-        overlay.style.display = "none";
+  /* ===== 3. Works modal (My Works) ===== */
+  // モーダルを開く
+  document.querySelectorAll('.work-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const modalId = card.dataset.modal;
+      const targetModal = document.getElementById(modalId);
+      if (targetModal) targetModal.classList.add('active');
+    });
+  });
+
+  // モーダルを閉じる（バツボタン・Backボタン・背景クリック）
+  const closeActions = '.modal-close, .back-home-btn, .work-modal';
+  document.querySelectorAll(closeActions).forEach(element => {
+    element.addEventListener('click', (e) => {
+      // 背景クリック時は、子要素クリックを除外
+      if (element.classList.contains('work-modal') && e.target !== element) return;
+      
+      const modal = element.closest('.work-modal');
+      if (modal) {
+        modal.classList.remove('active');
+        // Backボタンの時だけスクロール
+        if (element.classList.contains('back-home-btn')) {
+          document.querySelector('#works').scrollIntoView({ behavior: 'smooth' });
+        }
       }
     });
   });
 
-  /* ===== Works modal ===== */
-  document.querySelectorAll('.work-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const modalId = card.dataset.modal;
-      document.getElementById(modalId)?.classList.add('active');
-    });
-  });
-
-  document.querySelectorAll('.modal-close').forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.closest('.work-modal')?.classList.remove('active');
-    });
-  });
-
-});
-document.querySelectorAll('.work-modal').forEach(modal => {
-  modal.addEventListener('click', (e) => {
-    // 背景（.work-modal）そのものをクリックしたときだけ閉じる
-    if (e.target === modal) {
-      modal.classList.remove('active');
+  // ESCキーで閉じる
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.work-modal.active').forEach(m => m.classList.remove('active'));
+      document.querySelectorAll('.popup-overlay').forEach(p => p.style.display = 'none');
     }
   });
 });
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.work-modal.active')
-      .forEach(modal => modal.classList.remove('active'));
-  }
-});
-
 </script>
   
 </body>
