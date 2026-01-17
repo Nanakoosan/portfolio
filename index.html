@@ -247,20 +247,36 @@
 
 /* 菜々子の写真の表示をタイトルよりほんの少しだけ遅らせる（0.2秒ディレイ） */
 .about-photo-wrapper.fade-in-on-scroll {
-  transition-delay: 0.2s;
-}
+  transition-delay: 0.2s;}
 
 /* 菜々子の写真を少しだけズームしながら出す */
 .about-photo-wrapper.fade-in-on-scroll {
   opacity: 0;
   transform: scale(0.95) translateY(20px); /* 最初は少し小さく、下に配置 */
-  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
-}
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;}
 
+/* 以下、ファーストビューの動き
+1. 最初は透明にして少し下げておく */
+.fade-in-on-load {
+  opacity: 0;
+  transform: translateY(20px);}
+
+/* 2. JSで 'visible' クラスがついたら表示 */
+.fade-in-on-load.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;}
+
+/* 3. 時差（ディレイ）の設定：名前が最初、アイコンが次、ロゴが最後 */
+h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
+.first-icon.fade-in-on-load.visible {transition-delay: 0.8s; /* 名前が出てから0.6秒後 */}
+.logo.fade-in-on-load.visible {
+  transition-delay: 1.2s; /* アイコンが出てからさらに0.4秒後 */}
 .about-photo-wrapper.fade-in-on-scroll.visible {
   opacity: 1;
-  transform: scale(1) translateY(0); /* 元のサイズに戻る */
-}
+  transform: scale(1) translateY(0); /* 元のサイズに戻る */}
+
+
 .title {
   font-family: 'Mansalva', cursive;
   letter-spacing: 10px; /* ロゴっぽく広める */
@@ -885,7 +901,7 @@ html, body {
   <!-- ファーストビュー表紙 -->
     <section class="section first-view">
 <br>
-<h1 class="title">Nanako Shimizu</h1>
+<h1 class="title fade-in-on-load">Nanako Shimizu</h1>
 
 
 <br>
@@ -903,7 +919,7 @@ html, body {
     <img src="image/icon/first-icon.png" alt="first icon" />
   </div>
 
-  <p class="logo">Design that pulls you in</p>
+  <p class="logo fade-in-on-load">Design that pulls you in</p>
 
 
     </section>
@@ -1540,7 +1556,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
+document.addEventListener("DOMContentLoaded", () => {
+  
+  // --- 既存のコードのどこかにこれを追加 ---
+  
+  // ページ読み込み時にファーストビューの要素を光らせる
+  setTimeout(() => {
+    document.querySelectorAll('.fade-in-on-load').forEach(el => {
+      el.classList.add('visible');
+    });
+  }, 100); // 0.1秒後に実行開始
+  
+  // --- 既存のコード（fadeObserverなど）はそのまま ---
+});
 </script>
   
 </body>
