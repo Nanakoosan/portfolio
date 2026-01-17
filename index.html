@@ -214,15 +214,36 @@
 .fade-in-on-scroll {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
 }
 
 .fade-in-on-scroll.visible {
   opacity: 1;
   transform: translateY(0);
 }
+/* サマリーのテキストだけ、少し左からスライドさせる（オプション） */
+.about-content .fade-in-on-scroll {
+  transform: translateX(-15px); /* 左にずらしておく */
+}
 
+.fade-in-on-scroll.visible {
+  opacity: 1;
+  transform: translate(0, 0); /* 元の位置に戻る */
+}
+/* 順番にパラパラ出したい場合（ディレイの設定） */
+.about-content p:nth-child(1).visible { transition-delay: 0.1s; }
+.about-content p:nth-child(2).visible { transition-delay: 0.3s; }
+.about-content p:nth-child(3).visible { transition-delay: 0.5s; }
+.about-content p:nth-child(4).visible { transition-delay: 0.7s; }
 
+/* 横並びの要素に少しずつ時差をつける */
+.work-card:nth-child(1) { transition-delay: 0.1s; }
+.work-card:nth-child(2) { transition-delay: 0.3s; }
+.work-card:nth-child(3) { transition-delay: 0.5s; }
+
+.strength-item:nth-child(1) { transition-delay: 0.1s; }
+.strength-item:nth-child(2) { transition-delay: 0.3s; }
+.strength-item:nth-child(3) { transition-delay: 0.5s; }
 
 .title {
   font-family: 'Mansalva', cursive;
@@ -324,15 +345,34 @@
   color: #666;
 }
 
-    .work-card {
-      border: 1px solid var(--main-color);
-      padding: 1rem;
-      transition: transform 0.3s ease;
-    }
+/* 1. 基本の状態（ホバー時の設定） */
+.work-card {
+  border: 1px solid var(--main-color);
+  padding: 1rem;
+  /* 修正：transformの時間を個別に設定せず、フェードインの時はJS側のクラスに任せる */
+  transition: transform 0.3s ease, opacity 0.3s ease; 
+}
 
-    .work-card:hover {
-      transform: translateY(-5px);
-    }
+/* 2. フェードイン用の設定（クラスがついた時だけゆっくり動かす） */
+.work-card.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  /* ここでフェードイン専用の時間を指定する */
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+/* 3. 表示された後の状態（ここが重要！） */
+.work-card.fade-in-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 4. 表示し終わった後のホバー（上書き） */
+/* visibleがついた後にホバーした時だけ、0.3秒の速い動きに戻す */
+.work-card.fade-in-on-scroll.visible:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease; 
+}
 
 .work-modal {
   position: fixed;
@@ -863,9 +903,9 @@ html, body {
      <div class="book-container">
 
 
-    <h2 class="section-title">My Works</h2>
+    <h2 class="section-title fade-in-on-scroll">My Works</h2>
   <div class="works-grid">
-    <div class="work-card" data-modal="work1">
+    <div class="work-card fade-in-on-scroll" data-modal="work1">
       <img src="image/mockup/1.png" alt="Work 1" />
       <div class="work-info">
         <h4 class="proti">町家不動産 Website</h4>
@@ -873,7 +913,7 @@ html, body {
           アットホームで町に寄り添った温かい雰囲気と金沢の風情が伝わるWebサイトを目指しました。</p>
       </div>
     </div>
-    <div class="work-card" data-modal="work2">
+    <div class="work-card fade-in-on-scroll" data-modal="work2">
       <img src="image/mockup/2.png" alt="Work 2" />
       <div class="work-info">
         <h4 class="proti">LARTH 節電ガラスコート LP
@@ -883,7 +923,7 @@ html, body {
            問い合わせ・導線を意識し、サービス理解から行動までをスムーズにつなぐ構成を設計しました。</p>
       </div>
     </div>
-    <div class="work-card" data-modal="work3">
+    <div class="work-card fade-in-on-scroll" data-modal="work3">
       <img src="image/mockup/3.png" alt="Work 3" />
       <div class="work-info">
         <h3 class="proti">Shimizu Nanako Portfolio</h3>
@@ -917,25 +957,33 @@ html, body {
 
 
     <!-- 中央コンテンツ -->
-<h2 class="section-title">About Me</h2>  
-<div class="about-photo-wrapper">
+<h2 class="section-title fade-in-on-scroll">About Me</h2>  
+<div class="about-photo-wrapper fade-in-on-scroll">
   <img src="image/nanako2.jpg" alt="Nanako Shimizu" class="about-photo" />
 </div>
-<p class="year-label">Nanako Shimizu</p>
+<p class="year-label fade-in-on-scroll">Nanako Shimizu</p>
 
 <br>
-<p class="year-label">Summary</p>
+<p class="year-label fade-in-on-scroll">Summary</p> 
 <div class="about-content">
-
-      <p class="jp">日本の自動車部品メーカーで、ソフトウェア開発のPM補佐として働いていました。プロたちが集まって一つのものを作り上げる「チームで進む感」が大好きでした。
-働いているうちに「プロジェクトマネージャー」として人を率いるよりも、デザインの力で何かを生み出すことに惹かれていきました。<br> 
-「英語を話したい」「海外で生活したい」「デザインも学びたい」そんな複数の衝動に正直に従ってみた結果、カナダに留学することを決めました。多様性あふれる街での生活は、スキル以上に「生きる力」と「何事も前向きに捉える精神」を鍛えてくれました。
-PM補佐で培った「調整力」と、カナダで鍛えた「適応力」をベースに、デザインとコードを地続きに捉えた制作を心がけています。</p>
+<p class="jp fade-in-on-scroll">
+    日本の自動車部品メーカーで、ソフトウェア開発のPM補佐として働いていました。プロたちが集まって一つのものを作り上げる「チームで進む感」が大好きでした。
+    働いているうちに「プロジェクトマネージャー」として人を率いるよりも、デザインの力で何かを生み出すことに惹かれていきました。
+  </p>
+<p class="jp fade-in-on-scroll">
+    「英語を話したい」「海外で生活したい」「デザインも学びたい」そんな複数の衝動に正直に従ってみた結果、カナダに留学することを決めました。多様性あふれる街での生活は、スキル以上に「生きる力」と「何事も前向きに捉える精神」を鍛えてくれました。
+  </p>
+<p class="jp fade-in-on-scroll">
+    PM補佐で培った「調整力」と、カナダで鍛えた「適応力」をベースに、デザインとコードを地続きに捉えた制作を心がけています。
+  </p>
   
-        <p class="jp">
-          -  人から言われる印象：明るい / おだやか<br> 
-          -  好きなこと：人と話すこと / 読書 / ランニング / カメラ<br> 
-          -  得意なこと：英語での雑談 / Excel<br> 
+        <p class="jp fade-in-on-scroll">
+    - 人から言われる印象：明るい / おだやか<br> 
+    - 好きなこと：人と話すこと / 読書 / ランニング / カメラ<br> 
+    - 得意なこと：英語での雑談 / Excel
+  </p>
+
+
 
   <details class="en-toggle">
     <summary>English</summary>
@@ -957,10 +1005,10 @@ I strive to create seamless experiences where design and code naturally meet.
             </div> 
 <br>
     <!-- 強み -->
-<p class="year-label">Strength</p>
+<p class="year-label fade-in-on-scroll">Strength</p>
 <div class="strengths-grid">
       <!-- Strength 1 -->
-      <div class="strength-item">
+      <div class="strength-item fade-in-on-scroll">
         <button class="strength-button" data-popup="popup1">
           <img src="image/icon/komyu.png" alt="Communication Icon" />
           <p>Communication</p>
@@ -968,7 +1016,7 @@ I strive to create seamless experiences where design and code naturally meet.
       </div>
 
       <!-- Strength 2 -->
-      <div class="strength-item">
+      <div class="strength-item fade-in-on-scroll">
         <button class="strength-button" data-popup="popup2">
           <img src="image/icon/mazime.png" alt="Problem Solving Icon" />
           <p>Sincerity</p>
@@ -976,7 +1024,7 @@ I strive to create seamless experiences where design and code naturally meet.
       </div>
 
       <!-- Strength 3 -->
-      <div class="strength-item">
+      <div class="strength-item fade-in-on-scroll">
         <button class="strength-button" data-popup="popup3">
           <img src="image/icon/kokisin.png" alt="Creativity Icon" />
           <p>Curiosity</p>
@@ -1023,46 +1071,46 @@ I strive to create seamless experiences where design and code naturally meet.
 <br>
 
     <!-- スキル -->
-<p class="year-label">Skills</p>
+<p class="year-label fade-in-on-scroll">Skills</p>
 <div class="skills-grid">
-  <div class="skill-item">
-    <img src="image/skills/HTML.png" alt="HTML Icon" />
+  <div class="skill-item fade-in-on-scroll">
+    <img src="image/skills/HTML.png" alt="HTML Icon" loading="lazy"/>
     <p>HTML</p>
   </div>
-  <div class="skill-item">
-    <img src="image/skills/CSS.png" alt="CSS Icon" />
+  <div class="skill-item fade-in-on-scroll">
+    <img src="image/skills/CSS.png" alt="CSS Icon" loading="lazy"/>
     <p>CSS</p>
   </div>
-    <div class="skill-item">
-    <img src="image/skills/Java.png" alt="Java" />
+    <div class="skill-item fade-in-on-scroll">
+    <img src="image/skills/Java.png" alt="Java" loading="lazy"/>
     <p>Javascript</p>
   </div>
-    <div class="skill-item">
-    <img src="image/skills/Figma.png" alt="Figma Icon" />
+    <div class="skill-item fade-in-on-scroll">
+    <img src="image/skills/Figma.png" alt="Figma Icon" loading="lazy"/>
     <p>Figma</p>
   </div>
-  <div class="skill-item">
-    <img src="image/skills/Photoshop.png" alt="Photoshop Icon" />
+  <div class="skill-item fade-in-on-scroll">
+    <img src="image/skills/Photoshop.png" alt="Photoshop Icon"loading="lazy"/>
     <p>Photoshop</p>
   </div>
-  <div class="skill-item">
-    <img src="image/skills/illustrator.png" alt="Illustrator Icon" />
+  <div class="skill-item fade-in-on-scroll">
+    <img src="image/skills/illustrator.png" alt="Illustrator Icon" loading="lazy"/>
     <p>Illustrator</p>
   </div>
-  <div class="skill-item">
-    <img src="image/skills/VScode.png" alt="VSCode Icon" />
+  <div class="skill-item fade-in-on-scroll">
+    <img src="image/skills/VScode.png" alt="VSCode Icon" loading="lazy"/>
     <p>VS Code</p>
   </div>
-  <div class="skill-item">
-    <img src="image/skills/Webflow.png" alt="Webflow Icon" />
+  <div class="skill-item fade-in-on-scroll">
+    <img src="image/skills/Webflow.png" alt="Webflow Icon" loading="lazy"/>
     <p>Webflow</p>
   </div>
-  <div class="skill-item">
-    <img src="image/skills/Wordpress.png" alt="Wordpress Icon" />
+  <div class="skill-item fade-in-on-scroll">
+    <img src="image/skills/Wordpress.png" alt="Wordpress Icon" loading="lazy"/>
     <p>Wordpress</p>
   </div>
-    <div class="skill-item">
-    <img src="image/skills/Studio.png" alt="Studio Icon" />
+    <div class="skill-item fade-in-on-scroll">
+    <img src="image/skills/Studio.png" alt="Studio Icon"loading="lazy"/>
     <p>Studio</p>
   </div>
   </div>
@@ -1112,16 +1160,14 @@ I strive to create seamless experiences where design and code naturally meet.
 
 <div class="section-wrapper contact-bg">
   <section class="contact-section">
-    <h2 class="section-title">Contact</h2>
+    <h2 class="section-title fade-in-on-scroll">Contact</h2>
 
     <p class="contact-text">
       お気軽にご連絡ください！<br>
       Feel free to reach out if you’d like to work together or just say hello.
     </p>
 
-    <a
-      href="mailto:shimizu.2330@gmail.com"
-      class="contact-button"
+    <a href="mailto:shimizu.2330@gmail.com" class="contact-button fade-in-on-scroll"
     >
       Send me an email
     </a>
@@ -1478,6 +1524,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 </script>
   
 </body>
