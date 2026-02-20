@@ -380,7 +380,7 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
 /* 1. 基本の状態（ホバー時の設定） */
 .work-card {
   border: 1px solid var(--main-color);
-  padding: 1rem;
+  padding: 2rem;
   /* 修正：transformの時間を個別に設定せず、フェードインの時はJS側のクラスに任せる */
   transition: transform 0.3s ease, opacity 0.3s ease; 
 }
@@ -405,6 +405,8 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
   transform: translateY(-5px);
   transition: transform 0.3s ease; 
 }
+
+
 
 .work-modal {
   position: fixed;
@@ -936,6 +938,7 @@ html, body {
 
 
     <h2 class="section-title fade-in-on-scroll">My Works</h2>
+
   <div class="works-grid">
     <div class="work-card fade-in-on-scroll" data-modal="work1">
       <img src="image/mockup/1.png" alt="Work 1" />
@@ -948,8 +951,7 @@ html, body {
     <div class="work-card fade-in-on-scroll" data-modal="work2">
       <img src="image/mockup/2.png" alt="Work 2" />
       <div class="work-info">
-        <h4 class="proti">LARTH 節電ガラスコート LP
-        </h4>
+        <h4 class="proti">LARTH 節電ガラスコート LP</h4>
         <p>LARTH 節電ガラスコートのLPサイトのデザイン、構築をStudioにて制作しました。
 
            問い合わせ・導線を意識し、サービス理解から行動までをスムーズにつなぐ構成を設計しました。</p>
@@ -958,11 +960,36 @@ html, body {
     <div class="work-card fade-in-on-scroll" data-modal="work3">
       <img src="image/mockup/3.png" alt="Work 3" />
       <div class="work-info">
-        <h3 class="proti">Shimizu Nanako Portfolio</h3>
+        <h4 class="proti">Shimizu Nanako Portfolio</h4>
         <p>このサイトはスクラッチでコーディングしています。
 成果物を並べるだけでなく、採用担当の方が私のスキルや考え方、人となりをイメージしやすいような構成やデザインを心がけました。</p>
       </div>
     </div>
+
+<div class="work-card fade-in-on-scroll" data-modal="work4">
+      <img src="image/mockup/4.png" alt="Work 4" />
+      <div class="work-info">
+        <h4 class="proti">町家不動産 バナー広告</h4>
+        <p>町家不動産様向けに、ウェブサイト上に表示するバナー広告を制作しました。</p>
+      </div>
+    </div>
+
+    <div class="work-card fade-in-on-scroll" data-modal="work5">
+      <img src="image/mockup/5.png" alt="Work 5" />
+      <div class="work-info">
+        <h4 class="proti">百貨店向け バナー広告</h4>
+        <p>こちらはダミー広告の自主制作です。バレンタインイベントを想定したバナーを制作しました。</p>
+      </div>
+    </div>
+
+    <div class="work-card fade-in-on-scroll" data-modal="work6">
+      <img src="image/mockup/6.png" alt="Work 6" />
+      <div class="work-info">
+        <h4 class="proti">ウェビナー バナー広告</h4>
+        <p>こちらはダミー広告の自主制作です。デザイナー向けWEBセミナーを想定したバナーを制作しました。</p>
+      </div>
+    </div>
+
 </div>
 </div>
   </div>
@@ -1479,8 +1506,215 @@ I strive to create seamless experiences where design and code naturally meet.
 
    </div> <!--work-summary-->
       </div> <!--work-modal-content-->
-
 </div> <!--work-modal-work3-->
+
+
+<!-- Works4(BANNER)のポップアップ -->
+<div class="work-modal" id="work4">
+
+  <div class="work-modal-content">
+    <button class="modal-close">×</button>
+
+    <!-- Hero image -->
+    <div class="work-hero">
+      <img src="image/mockup/4.png" alt="">
+    </div>
+
+    <!-- Meta -->
+<div class="work-summary">
+
+      <div class="summary-row">
+        <div class="summary-label">サマリー</div>
+           <div class="summary-content">
+             <p>町家不動産様に向けた、ウェブサイト掲載用の広告バナーを制作しました。</p>
+           </div>
+      </div>
+      
+
+      <div class="summary-row">
+        <div class="summary-label">担当範囲</div>
+           <div class="summary-content">
+             <p>デザイン</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-label">使用ツール</div>
+           <div class="summary-content">
+             <p>Figma / Photoshop</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">ターゲット</div>
+           <div class="summary-content">
+             <p>30〜60代の石川県にお住まいの男女</p>
+           </div>
+      </div>
+
+          <div class="summary-row">
+         <div class="summary-label">ご要望</div>
+           <div class="summary-content">
+             <p>誠実さ、温かみが伝わるデザイン</p>
+             <p>配色はホームページの雰囲気と合わせ、オフホワイト/緑/オレンジを入れる</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">工夫した点</div>
+           <div class="summary-content">
+             <p>実際にお悩みを相談する様子がイメージしやすいように、お客様と対話している様子をテーマにしました。
+              「不動産」「土地」のような目についてほしいワードを強調し、文字サイズにメリハリを付けました。
+              金沢の和の雰囲気が少しでも伝わるよう、背景に和風のイラストを薄く入れました。
+             </p>
+           </div>
+      </div>
+
+
+  <div class="work-modal-footer">
+    <button class="back-home-btn">Back to Works</button>
+  </div>
+  
+   </div> <!--work-summary-->
+      </div> <!--work-modal-content-->
+</div> <!--work-modal-work4-->
+
+<!-- Works5(BANNER)のポップアップ -->
+<div class="work-modal" id="work5">
+
+  <div class="work-modal-content">
+    <button class="modal-close">×</button>
+
+    <!-- Hero image -->
+    <div class="work-hero">
+      <img src="image/mockup/5.png" alt="">
+    </div>
+
+    <!-- Meta -->
+<div class="work-summary">
+
+      <div class="summary-row">
+        <div class="summary-label">サマリー</div>
+           <div class="summary-content">
+             <p>バレンタインの、自分へのご褒美チョコを訴求するダミー広告の自主制作です。百貨店の特設サイトやSNS広告を想定し、一目で「上質感」と「特別感」が伝わるデザインを目指しました。</p>
+           </div>
+      </div>
+      
+
+      <div class="summary-row">
+        <div class="summary-label">担当範囲</div>
+           <div class="summary-content">
+             <p>デザイン</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-label">使用ツール</div>
+           <div class="summary-content">
+             <p>Figma / Photoshop</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">ターゲット</div>
+           <div class="summary-content">
+             <p>20代〜40代の、自分へのご褒美チョコを探している大人女子</p>
+           </div>
+      </div>
+
+          <div class="summary-row">
+         <div class="summary-label">雰囲気</div>
+           <div class="summary-content">
+             <p>ラグジュアリー、落ち着いた高級感のあるデザイン</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">工夫した点</div>
+           <div class="summary-content">
+             <p>Photoshopで被写体であるカヌレやチョコレートをより際だて美味しそうに見えるよう、色彩修正等の画像編集を行いました。背景の明度や質感を編集し、高級感と視認性を上げることを意識しました。
+              「バレンタイン」「期間限定ショコラ」のフォントに遊びを入れ、女性向けの可愛らしい雰囲気が出るように意識しました。
+             </p>
+           </div>
+      </div>
+
+
+  <div class="work-modal-footer">
+    <button class="back-home-btn">Back to Works</button>
+  </div>
+  
+   </div> <!--work-summary-->
+      </div> <!--work-modal-content-->
+</div> <!--work-modal-work5-->
+
+
+<!-- Works6(BANNER)のポップアップ -->
+<div class="work-modal" id="work6">
+
+  <div class="work-modal-content">
+    <button class="modal-close">×</button>
+
+    <!-- Hero image -->
+    <div class="work-hero">
+      <img src="image/mockup/6.png" alt="">
+    </div>
+
+    <!-- Meta -->
+<div class="work-summary">
+
+      <div class="summary-row">
+        <div class="summary-label">サマリー</div>
+           <div class="summary-content">
+             <p>ダミー広告の自主制作です。学生・若手向け「キャリア形成」セミナーを想定したバナーを制作しました。</p>
+           </div>
+      </div>
+      
+
+      <div class="summary-row">
+        <div class="summary-label">担当範囲</div>
+           <div class="summary-content">
+             <p>デザイン</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-label">使用ツール</div>
+           <div class="summary-content">
+             <p>Figma / Photoshop</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">ターゲット</div>
+           <div class="summary-content">
+             <p>20~30代のキャリア形成を検討中の男女</p>
+           </div>
+      </div>
+
+          <div class="summary-row">
+         <div class="summary-label">雰囲気</div>
+           <div class="summary-content">
+             <p>知的で洗練された、モダン・アカデミックなデザイン</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">工夫した点</div>
+           <div class="summary-content">
+             <p>派手な装飾を避け、デザインスクールらしい洗練された雰囲気を目指しました。
+              情報を整理し、関連性のある情報の文字サイズを統一し、より伝えたい部分は強調しました。文字列がメインのデザインでも地味な印象を与えないよう余白を意識しました。
+              
+             </p>
+           </div>
+      </div>
+
+  <div class="work-modal-footer">
+    <button class="back-home-btn">Back to Works</button>
+  </div>
+
+   </div> <!--work-summary-->
+      </div> <!--work-modal-content-->
+</div> <!--work-modal-work6-->
 
 
 
