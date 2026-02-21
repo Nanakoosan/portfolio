@@ -171,10 +171,11 @@
   right: 0;
 }
 
-.framed-photo img {
-  transition: transform 0.3s ease-out;
-}
 
+
+.framed-photo {
+  pointer-events: auto;
+}
 
 .photo-1 img {
   max-width: 200px;
@@ -210,6 +211,32 @@
   max-width: 200px;
   transform: translateX(330px);
 }
+
+/* 1. 最初はモノクロにしておく設定 */
+.framed-photo img {
+  /* グレースケール（モノクロ）100% */
+  filter: grayscale(100%); 
+  /* 色の変化を滑らかにする（0.5秒かけて変わる） */
+  transition: transform 0.3s ease-out, filter 0.5s ease;
+  cursor: pointer; /* カーソルを合わせた時に指マークにする */
+}
+
+/* 2. マウスを合わせた時（hover）にカラーにする設定 */
+.framed-photo:hover img {
+  /* グレースケールを0%（＝カラー）に戻す */
+  filter: grayscale(0%);
+}
+
+/* 個別のtranslateXを維持するための注意点 */
+/* hover時も元の位置（translateX）を維持させる必要があります */
+.photo-1:hover img { transform: translateX(-430px) ; }
+.photo-2:hover img { transform: translateX(-370px) ; }
+.photo-3:hover img { transform: translateX(-500px) ; }
+.photo-4:hover img { transform: translateX(-320px) ; }
+.photo-5:hover img { transform: translateX(400px) ; }
+.photo-6:hover img { transform: translateX(400px) ; }
+.photo-7:hover img { transform: translateX(500px) ; }
+.photo-8:hover img { transform: translateX(330px) ; }
 
 .fade-in-on-scroll {
   opacity: 0;
