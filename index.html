@@ -342,26 +342,30 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
   width: auto;
 }
 .book-container {
-  position: relative; /* レイヤー分離のために必要 */
+  position: relative;
   max-width: 500px;
   margin: 0 auto;
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
     url('image/texture/book.jpg');
-  background-size: cover;
-  background-repeat: repeat;
-  padding: 0.5rem; /* 上下余白は各sectionで調整 */
+  /* ↓ 修正：引き伸ばさず、元のサイズで表示する */
+  background-size: auto; 
+  /* ↓ 修正：隙間なく敷き詰める（既に設定されていますが重要！） */
+  background-repeat: repeat; 
+  padding: 0.5rem;
 }
+
 .book-container2 {
-  position: relative; /* レイヤー分離のために必要 */
+  position: relative;
   max-width: 500px;
   margin: 0 auto;
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
     url('image/texture/book.jpg');
-  background-size: cover;
+  /* ↓ ここも同様に修正 */
+  background-size: auto;
   background-repeat: repeat;
-  padding: 2rem; /* 上下余白は各sectionで調整 */
+  padding: 2rem;
 }
 
 
