@@ -758,13 +758,14 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
 }
 
 .strengths-grid {
-  justify-content: center;
-  gap: 3rem;
+  display: flex; /* flexのみに絞る */
+  justify-content: center; /* 中央寄せ */
+  gap: 1.5rem; /* アイテム間の隙間（お好みで調整） */
   margin-top: 2rem;
-  display: flex;
-  grid-template-columns: repeat(3, 80px);
+  flex-wrap: nowrap;
 }
 .strength-item {
+  width: 120px; /* ★ここが重要！全アイテムの幅を統一する */
   text-align: center;
   color: #666;
 }
@@ -776,6 +777,7 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%; /* 親のwidth(120px)いっぱいに広げる */
 }
 .strength-button img {
   width: 50px;
