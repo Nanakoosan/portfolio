@@ -1944,45 +1944,75 @@ document.addEventListener("DOMContentLoaded", () => {
         entry.target.classList.add("visible");
       }
     });
-  }, { threshold: 0.1 }); // 少し早めに発火させる
+  }, { threshold: 0.1 }); 
   fadeTargets.forEach(el => fadeObserver.observe(el));
 
+  /* ===== スクロールを止める・再開する魔法の関数 ===== */
+  // 💡 html, body, everythingexceptforfooter 全部止めます！
+  const disableScroll = () => {
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    const wrapper = document.querySelector('.everythingexceptforfooter');
+    if (wrapper) wrapper.style.overflow = "hidden";
+  };
+
+  const enableScroll = () => {
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+    const wrapper = document.querySelector('.everythingexceptforfooter');
+    if (wrapper) wrapper.style.overflow = "";
+  };
+
   /* ===== 2. Strength popup (About Me) ===== */
+  document.querySelectorAll(".popup-overlay").forEach(overlay => {
+    overlay.addEventListener("click", (e) => {
+      // クリックされたのが「背景（overlay）」そのものだった場合だけ閉じる
+      // （※これがないと、中の白い箱や文字をクリックしても閉じちゃいます）
+      if (e.target === overlay) {
+        overlay.style.display = "none";
+        enableScroll(); // スクロールも忘れずに再開！
+      }
+    });
+  });
   document.querySelectorAll(".strength-button").forEach(btn => {
     btn.addEventListener("click", () => {
       const id = btn.dataset.popup;
       const popup = document.getElementById(id);
-      if (popup) popup.style.display = "flex";
+      if (popup) {
+        popup.style.display = "flex";
+        disableScroll(); // 💡ここで絶対止める！
+      }
     });
   });
 
   document.querySelectorAll(".close-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       btn.closest(".popup-overlay").style.display = "none";
+      enableScroll(); // 💡ここで再開！
     });
   });
 
   /* ===== 3. Works modal (My Works) ===== */
-  // モーダルを開く
   document.querySelectorAll('.work-card').forEach(card => {
     card.addEventListener('click', () => {
       const modalId = card.dataset.modal;
       const targetModal = document.getElementById(modalId);
-      if (targetModal) targetModal.classList.add('active');
+      if (targetModal) {
+        targetModal.classList.add('active');
+        disableScroll(); // 💡Worksのモーダルでも一応止めます！
+      }
     });
   });
 
-  // モーダルを閉じる（バツボタン・Backボタン・背景クリック）
   const closeActions = '.modal-close, .back-home-btn, .work-modal';
   document.querySelectorAll(closeActions).forEach(element => {
     element.addEventListener('click', (e) => {
-      // 背景クリック時は、子要素クリックを除外
       if (element.classList.contains('work-modal') && e.target !== element) return;
       
       const modal = element.closest('.work-modal');
       if (modal) {
         modal.classList.remove('active');
-        // Backボタンの時だけスクロール
+        enableScroll(); // 💡Worksを閉じた時も再開！
         if (element.classList.contains('back-home-btn')) {
           document.querySelector('#works').scrollIntoView({ behavior: 'smooth' });
         }
@@ -1990,26 +2020,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ESCキーで閉じる
+  /* ===== 4. ESCキーで閉じる ===== */
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       document.querySelectorAll('.work-modal.active').forEach(m => m.classList.remove('active'));
       document.querySelectorAll('.popup-overlay').forEach(p => p.style.display = 'none');
+      enableScroll(); // 💡ESCで閉じても再開！
     }
   });
 });
+
 document.addEventListener("DOMContentLoaded", () => {
-  
-  // --- 既存のコードのどこかにこれを追加 ---
-  
-  // ページ読み込み時にファーストビューの要素を光らせる
   setTimeout(() => {
     document.querySelectorAll('.fade-in-on-load').forEach(el => {
       el.classList.add('visible');
     });
-  }, 100); // 0.1秒後に実行開始
-  
-  // --- 既存のコード（fadeObserverなど）はそのまま ---
+  }, 100); 
 });
 </script>
   
