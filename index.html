@@ -14,6 +14,39 @@
 
 
   <style>
+
+
+    /* =========================================
+   スマホ専用の左右ゆとり（パディング）一括設定
+   ========================================= */
+@media (max-width: 768px) {
+  
+  /* 1. 各セクションの大枠に左右のゆとりを足す */
+  .works-section,
+  .about-section,
+  .contact-section {
+    padding: 1rem 1.5rem; /* 上下1rem、左右1.5rem（約24px） */
+  }
+
+  /* 2. 本のデザイン枠（コンテナ）の内側にもゆとりを足す */
+  .book-container,
+  .book-container2 {
+    padding: 2rem 1.5rem; /* 上下2rem、左右1.5rem（約24px） */
+  }
+  
+  /* 3. 余白が画面外にはみ出さないための絶対防壁（念のため） */
+  .works-section,
+  .about-section,
+  .contact-section,
+  .book-container,
+  .book-container2 {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
+
+
 /* 左右背景の共通設定 */
 .side-image {
   position:fixed;
