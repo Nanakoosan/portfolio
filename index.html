@@ -622,6 +622,18 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
   font-family:'Mansalva', cursive;
 }
 
+/* スマホ対応（画面幅が768px以下の時だけ発動する魔法） */
+@media (max-width: 768px) {
+  
+  /* タイトルと文章に「全く同じ余白」を持たせて左端を揃える */
+  .year-label,
+  .about-content {
+    padding: 0 1.5rem;
+  }
+  
+  /* (その他、さっき追加した strengths-grid などの記述はそのまま残してOKです) */
+}
+
 .history-item img {
   width: 100%;
   max-width: 500px;
@@ -679,6 +691,7 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
       .hero-title {
         font-size: 2rem;
       }
+
       .section-title {
   font-family: 'Mansalva',cursive;
   font-size: 1.7rem;
