@@ -78,7 +78,6 @@
   z-index: 1;
 }
 
-
 .contact-section
  {
   position: relative;
@@ -343,6 +342,8 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
   height: 40px;
   width: auto;
 }
+
+/* <!-- main-book -->*/
 .book-container {
   position: relative;
   max-width: 500px;
@@ -365,7 +366,29 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
   background-origin: border-box; 
 }
 
+/* <!-- Works-book -->*/
+.book-container1 {
+  position: relative;
+  width: 100%; 
+  box-sizing: border-box;
+  max-width: 500px;
+  margin: 0 auto;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    url('image/texture/book.jpg');
+  background-size: auto;
+  background-repeat: repeat;
+  /* 追加：背景を描画する範囲を「枠の端まで」広げる */
+  background-clip: padding-box; 
+  /* 追加：背景の基準点を「パディングを含めた端」に合わせる */
+  background-origin: border-box; 
+  /* 追加：背景を描画する範囲を「枠の端まで」広げる */
+  background-clip: padding-box; 
+  /* 追加：背景の基準点を「パディングを含めた端」に合わせる */
+  background-origin: border-box; 
+}
 
+/* <!-- About-book -->*/
 .book-container2 {
   position: relative;
   width: 100%; 
@@ -377,7 +400,7 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
     url('image/texture/book.jpg');
   background-size: auto;
   background-repeat: repeat;
-  padding: 4rem;
+  padding: 5rem;
   /* 追加：背景を描画する範囲を「枠の端まで」広げる */
   background-clip: padding-box; 
   /* 追加：背景の基準点を「パディングを含めた端」に合わせる */
@@ -388,6 +411,28 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
   background-origin: border-box; 
 }
 
+/* <!-- Contact-book -->*/
+.book-container3 {
+  position: relative;
+  width: 100%; 
+  box-sizing: border-box;
+  max-width: 500px;
+  margin: 0 auto;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    url('image/texture/book.jpg');
+  background-size: auto;
+  background-repeat: repeat;
+  padding: 1rem;
+  /* 追加：背景を描画する範囲を「枠の端まで」広げる */
+  background-clip: padding-box; 
+  /* 追加：背景の基準点を「パディングを含めた端」に合わせる */
+  background-origin: border-box; 
+  /* 追加：背景を描画する範囲を「枠の端まで」広げる */
+  background-clip: padding-box; 
+  /* 追加：背景の基準点を「パディングを含めた端」に合わせる */
+  background-origin: border-box; 
+}
 
 .first-view {
   height: 90vh;
@@ -996,7 +1041,7 @@ html, body {
     <!-- Works　セクション -->
 <div class="section-wrapper works-bg">
   <section id="works" class="works-section">
-     <div class="book-container">
+     <div class="book-container1">
 
 
     <h2 class="section-title fade-in-on-scroll">My Works</h2>
@@ -1062,12 +1107,7 @@ html, body {
     </div>
 
 
-</div>
-</div>
-  </div>
-
-
-  </section>
+</div> </div> </section> </div>
 
   <div class="background-left">
     <!-- SVGで手書きメモ（例：「初めてのクライアントワーク」） -->
@@ -1175,6 +1215,7 @@ I strive to create seamless experiences where design and code naturally meet.
       <details class="en-toggle">
     <summary>English</summary>
     <p class="en">I love communication and listening to other's thoughts or stories. that is my way to build trust and get close with.this is also important to commit one's ideal or know their core needs, so that i can find the best design for them.</p>
+  </details>
   </div>
 </div>
 
@@ -1189,6 +1230,7 @@ I strive to create seamless experiences where design and code naturally meet.
       <details class="en-toggle">
     <summary>English</summary>
     <p class="en">For all situation, i am serious and trying to be humble. I listen to other's opinions or advices with respects even though it is opposite to mine or hard to accept or understand.i will always be considerate and supportive for them. this will be helpful to me too for knowing new perspect or learning new values to improve myself.</p>
+  </details>
   </div>
 </div>
 
@@ -1206,6 +1248,7 @@ I strive to create seamless experiences where design and code naturally meet.
       I tried to engage into IT projects even i was not majoring in science. I went abroad to study even i was not able to speak English well at the time.
       but I know trying new things always gives me tips to live stronger and wisier even more. and it makes my day fulfill and just fun.
     </p>
+    </details>
   </div>
 </div>
 <br>
@@ -1296,7 +1339,7 @@ I strive to create seamless experiences where design and code naturally meet.
   </div>
     <!-- Contact セクション -->
 
-         <div class="book-container">
+         <div class="book-container3">
 
 <div class="section-wrapper contact-bg">
   <section class="contact-section">
