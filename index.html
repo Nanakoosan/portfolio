@@ -23,7 +23,11 @@
 #loading-screen {
   position: fixed;
   inset: 0; /* top:0, left:0, width:100vw, height:100vh と同じ意味 */
-  background-color: #F5F3EB; /* サイトの背景色と同じにするのがおすすめ！ */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    url('image/texture/book.jpg');
+  background-size: auto;
+  background-repeat: repeat;
   display: flex;
   justify-content: center;
   align-items: center;
