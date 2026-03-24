@@ -15,6 +15,35 @@
 
   <style>
 
+/* ローディング画面全体の設定 */
+#loading-screen {
+  position: fixed;
+  inset: 0; /* top:0, left:0, width:100vw, height:100vh と同じ意味 */
+  background-color: #F5F3EB; /* サイトの背景色と同じにするのがおすすめ！ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* どの要素よりも一番上に持ってくる */
+  
+  /* 消える時は0.8秒かけてフワッと透明になる設定 */
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+  
+  /* お守り：レイアウト崩れ防止 */
+  box-sizing: border-box; 
+}
+
+/* Lottieアニメーションのサイズ */
+#lottie-container {
+  width: 200px; /* 動画のサイズに合わせて調整してください */
+  height: 200px;
+}
+
+/* 読み込み完了後にJSで「.loaded」クラスが付いたら消える魔法 */
+body.loaded #loading-screen {
+  opacity: 0;
+  visibility: hidden; /* 透明になった後、下の要素をクリックできるように当たり判定を消す */
+}
+
 /* 左右背景の共通設定 */
 .side-image {
   position:fixed;
@@ -994,6 +1023,12 @@ html, body {
   
 </head>
 <body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+
+<div id="loading-screen">
+  <div id="lottie-container"></div>
+</div>
+
   <div class="everythingexceptforfooter">
   <!-- 左右の固定背景写真 -->
 <div class="side-image left-side">
@@ -2044,6 +2079,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, 100); 
 });
+
+// (1) Lottieアニメーションの再生設定
+const lottieContainer = document.getElementById('lottie-container');
+if (lottieContainer) {
+  const animation = lottie.loadAnimation({
+    container: lottieContainer,
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    
+    // ★ここにファイル名を入れる
+    path: 'BookRoading.json' 
+  });
+}
+
+// (2) ページが全部読み込まれたらローディング画面を消す設定
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+});
+
 </script>
   
 </body>
