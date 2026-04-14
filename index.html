@@ -522,6 +522,7 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
 
 /* 1. 基本の状態（ホバー時の設定） */
 .work-card {
+  position: relative; /* ラベルの「基準」にするために必須！ */
   border: 1px solid var(--main-color);
   padding: 2rem;
   /* 修正：transformの時間を個別に設定せず、フェードインの時はJS側のクラスに任せる */
@@ -547,6 +548,46 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
 .work-card.fade-in-on-scroll.visible:hover {
   transform: translateY(-5px);
   transition: transform 0.3s ease; 
+}
+
+.work-hero {
+  width: 100%;
+  max-height: 60vh;          /* ← ポップアップ内で大きくなりすぎない */
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.work-hero img {
+  width: 100%;
+  height: auto;
+  max-height: 60vh;
+  object-fit: contain;       /* ← 画像全体を収める（切れない） */
+  display: block;
+}
+
+      .work-card img:not(.work-label-img) {
+        width: 100%;
+        height: auto;
+        display: inline-block;
+      }
+      .work-card{
+        text-align: center;
+        width: 70%;
+        margin: 0 auto;      /* ← 中央寄せの必須 */
+   display:block;
+      }
+
+
+/* クライアントワークのラベル画像のスタイル */
+.work-label-img {
+  position: absolute; /* 親要素（.work-card）を基準に動かす */
+  top: 10px;          /* 親の端からどれくらい離すか（添付画像に合わせて微調整） */
+  left: 10px;         /* 親の端からどれくらい離すか */
+  z-index: 10;        /* メイン画像の上に重ねる */
+  /* 3. サイズ調整はここ！ */
+  width: 130px;       /* ラベルの幅を、Nanakoさんが作った画像に合わせて調整 */
+  height: auto;       /* 高さは自動にして比率を守る */
+  pointer-events: none; /* ラベルがクリックを邪魔しないように（UX的な配慮） */
 }
 
 
@@ -674,21 +715,6 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
   cursor: pointer;
 }
 
-.work-hero {
-  width: 100%;
-  max-height: 60vh;          /* ← ポップアップ内で大きくなりすぎない */
-  overflow: hidden;
-  margin-bottom: 2rem;
-}
-
-.work-hero img {
-  width: 100%;
-  height: auto;
-  max-height: 60vh;
-  object-fit: contain;       /* ← 画像全体を収める（切れない） */
-  display: block;
-}
-
 
 .about-photo-wrapper {
   display: flex;
@@ -776,18 +802,6 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
   max-width: 600px;
   margin: 12%;
 
-      }
-
-      .work-card img {
-        width: 100%;
-        height: auto;
-        display: inline-block;
-      }
-      .work-card{
-        text-align: center;
-        width: 70%;
-        margin: 0 auto;      /* ← 中央寄せの必須 */
-   display:block;
       }
 
       .about-content {
@@ -1102,14 +1116,16 @@ html, body {
 
   <div class="works-grid">
     <div class="work-card fade-in-on-scroll" data-modal="work1">
+      <img src="image/label/label1.png" alt="クライアントワーク" class="work-label-img"/>
       <img src="image/mockup/1.png" alt="Work 1" loading="lazy"/>
       <div class="work-info">
-        <h4 class="proti">町家不動産様向け Website</h4>
+        <h4 class="proti">町家不動産向け Website</h4>
         <p>町家不動産様のWEBサイトのデザイン、構築をWebflowにて制作しました。
           アットホームで町に寄り添った温かい雰囲気と金沢の風情が伝わるWebサイトを目指しました。</p>
       </div>
     </div>
     <div class="work-card fade-in-on-scroll" data-modal="work2">
+            <img src="image/label/label1.png" alt="クライアントワーク" class="work-label-img"/>
       <img src="image/mockup/2.png" alt="Work 2" loading="lazy"/>
       <div class="work-info">
         <h4 class="proti">LARTH様向け LP</h4>
@@ -1119,6 +1135,7 @@ html, body {
       </div>
     </div>
     <div class="work-card fade-in-on-scroll" data-modal="work3">
+            <img src="image/label/label2.png" alt="自主制作" class="work-label-img"/>
       <img src="image/mockup/3.png" alt="Work 3" loading="lazy"/>
       <div class="work-info">
         <h4 class="proti">Shimizu Nanako Portfolio</h4>
@@ -1128,6 +1145,7 @@ html, body {
     </div>
 
 <div class="work-card fade-in-on-scroll" data-modal="work4">
+        <img src="image/label/label1.png" alt="クライアントワーク" class="work-label-img"/>
       <img src="image/mockup/4.png" alt="Work 4" loading="lazy"/>
       <div class="work-info">
         <h4 class="proti">町家不動産様向け バナー広告</h4>
@@ -1136,6 +1154,7 @@ html, body {
     </div>
 
     <div class="work-card fade-in-on-scroll" data-modal="work5">
+            <img src="image/label/label2.png" alt="自主制作" class="work-label-img"/>
       <img src="image/mockup/5.png" alt="Work 5" loading="lazy"/>
       <div class="work-info">
         <h4 class="proti">百貨店向け バナー広告</h4>
@@ -1144,6 +1163,7 @@ html, body {
     </div>
 
     <div class="work-card fade-in-on-scroll" data-modal="work6">
+      <img src="image/label/label2.png" alt="自主制作" class="work-label-img"/>
       <img src="image/mockup/6.png" alt="Work 6" loading="lazy"/>
       <div class="work-info">
         <h4 class="proti">ウェビナー バナー広告</h4>
@@ -1153,6 +1173,7 @@ html, body {
 
 
     <div class="work-card fade-in-on-scroll" data-modal="work7">
+      <img src="image/label/label2.png" alt="自主制作" class="work-label-img"/>
       <img src="image/mockup/7.png" alt="Work 7" loading="lazy"/>
       <div class="work-info">
         <h4 class="proti">UIUX改善アプローチ スライド</h4>
@@ -1162,6 +1183,7 @@ html, body {
 
 
     <div class="work-card fade-in-on-scroll" data-modal="work8">
+      <img src="image/label/label1.png" alt="クライアントワーク" class="work-label-img"/>
       <img src="image/mockup/8.png" alt="Work 8" loading="lazy"/>
       <div class="work-info">
         <h4 class="proti">polite casually様向け 名刺</h4>
@@ -1996,13 +2018,13 @@ UI/UX専任デザイナーとして、初期の要件定義や情報設計から
            </div>
       </div>  
 
-      <div class="summary-row">
+            <div class="summary-row">
          <div class="summary-label">制作期間</div>
            <div class="summary-content">
              <p>3日</p>
       </div>
       </div>
-  
+
   <div class="work-modal-footer">
     <button class="back-home-btn">Back to Works</button>
   </div>
