@@ -623,6 +623,63 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
   text-align: center;
 }
 
+/* 左側の円の部分 */
+.arrow-circle {
+  display: flex;            /* 中の矢印を真ん中に置くための設定 */
+  justify-content: center;  /* 左右の真ん中 */
+  align-items: center;      /* 上下の真ん中 */
+  
+  width: 30px;              /* 円の幅 */
+  height: 30px;             /* 円の高さ（幅と同じにする） */
+  border-radius: 50%;       /* これを入れるだけで「正方形」が「正円」になります！ */
+  
+  background-color: #96834b; /* 円の色（最初はゴールド） */
+  color: #fff;               /* 矢印の色（白） */
+  font-size: 24px;           /* 矢印の大きさ */
+  
+  border: 2px solid #96834b; /* 縁取り（ホバー時に白抜きにするなら必要） */
+  transition: all 0.1s ease;
+  text-decoration: none;
+}
+
+/* ★ホバーした時：白抜きにする設定 */
+.view-more-btn:hover .arrow-circle {
+  background-color: transparent; /* 背景を透明にする */
+  color: #978433;                   /* 矢印を黒にする */
+  border-color: #978433;            /* 縁取りを黒にする */
+}
+/* 3. ホバー時のテキストの色変え */
+.view-more-btn:hover .view-more-text {
+  color: #978433;             /* ホバーで黒（濃いグレー）にする */
+  text-decoration: none;
+}
+
+/* 1. ボタンを中央に配置し、下線を完全に消す */
+.view-more-container {
+  display: flex;
+  justify-content: center; /* 横方向の中央寄せ */
+  margin-bottom: 50px;         /* 前後の余白 */
+}
+
+.view-more-btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;               /* 丸と文字の間隔 */
+  text-decoration: none !important; /* ★下線を強制的に消す */
+  outline: none;
+}
+
+/* 2. 右側の「View more」テキストのデザイン */
+.view-more-text {
+  font-family: 'Mansalva', cursive;
+  font-size: 1rem;        
+  color: #978433;         
+  text-decoration: none;   
+}
+
+
+
+
 .back-home-btn {
   font-family:'Mansalva', cursive;
   background: none;
@@ -1120,7 +1177,7 @@ html, body {
       <img src="image/label/label1.png" alt="クライアントワーク" class="work-label-img"/>
       <img src="image/mockup/1.png" alt="Work 1" loading="lazy"/>
       <div class="work-info">
-        <h4 class="proti">町家不動産向け Website</h4>
+        <h4 class="proti">町家不動産様向け Website</h4>
         <p>町家不動産様のWEBサイトのデザイン、構築をWebflowにて制作しました。
           アットホームで町に寄り添った温かい雰囲気と金沢の風情が伝わるWebサイトを目指しました。</p>
       </div>
@@ -1199,8 +1256,15 @@ html, body {
         <h4 class="proti">金沢旅行 バナー広告</h4>
         <p>こちらはダミー広告の自主制作です。新幹線で行く金沢旅行を促す広告を想定したバナーを制作しました。</p>
     </div>
-
+    
 </div> </div> </section> </div>
+
+<div class="view-more-container">
+  <a href="works.html" class="view-more-btn">
+    <span class="arrow-circle">→</span>
+    <span class="view-more-text">View more</span>
+  </a>
+</div>
 
   <div class="background-left">
     <!-- SVGで手書きメモ（例：「初めてのクライアントワーク」） -->
@@ -2100,6 +2164,13 @@ UI/UX専任デザイナーとして、初期の要件定義や情報設計から
              <p>桜や石垣の美しさを最大限に活かすため、強いベタ塗りを避け、文字に繊細な影や半透明のレイヤーを重ねることで、写真の質感を邪魔せずに高い視認性を確保しました。</p>
               <p>無料開放という最も重要な訴求ポイントを、和風の飾り枠で囲うことで、全体のトーンを崩さず上品さを保ちながら、ユーザーの目を引くアクセントとして配置しました。</p>
            </div>
+      </div>
+
+       <div class="summary-row">
+         <div class="summary-label">制作期間</div>
+           <div class="summary-content">
+             <p>1日</p>
+      </div>
       </div>
 
 
