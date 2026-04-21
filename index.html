@@ -585,7 +585,7 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
   left: 10px;         /* 親の端からどれくらい離すか */
   z-index: 10;        /* メイン画像の上に重ねる */
   /* 3. サイズ調整はここ！ */
-  width: 130px;       /* ラベルの幅を、Nanakoさんが作った画像に合わせて調整 */
+  width: 145px;       /* ラベルの幅を、Nanakoさんが作った画像に合わせて調整 */
   height: auto;       /* 高さは自動にして比率を守る */
   pointer-events: none; /* ラベルがクリックを邪魔しないように（UX的な配慮） */
 }
@@ -1032,36 +1032,9 @@ h1.title.fade-in-on-load.visible {transition-delay: 0.2s;}
   cursor: pointer;
 }
 
-.scroll-text {
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 0.3rem;
-  font-family:'Pixmachina', sans-serif;
-  letter-spacing: 1px;
-}
 
-.scroll-line {
-  width: 2px;
-  height: 100px;
-  background-color: #666;
-  animation: scroll-line-move 1.6s ease-in-out infinite;
-}
 
-@keyframes scroll-line-move {
-  0% { transform: translateY(0); opacity: 0.2; }
-  50% { transform: translateY(10px); opacity: 1; }
-  100% { transform: translateY(0); opacity: 0.2; }
-}
 
-@media (max-width: 768px) {
-  .scroll-line {
-    height: 20px;
-  }
-
-  .scroll-text {
-    font-size: 0.75rem;
-  }
-}
 html, body {
   max-width: 100%;
   overflow-x: hidden;
@@ -1215,8 +1188,8 @@ html, body {
             <img src="image/label/label2.png" alt="自主制作" class="work-label-img"/>
       <img src="image/mockup/5.png" alt="Work 5" loading="lazy"/>
       <div class="work-info">
-        <h4 class="proti">百貨店向け バナー広告</h4>
-        <p>こちらはダミー広告の自主制作です。バレンタインイベントを想定したバナーを制作しました。</p>
+        <h4 class="proti">百貨店向け SNS広告</h4>
+        <p>こちらはダミー広告の自主制作です。バレンタインイベントを想定したSNS広告を制作しました。</p>
       </div>
     </div>
 
@@ -1256,6 +1229,16 @@ html, body {
         <h4 class="proti">金沢旅行 バナー広告</h4>
         <p>こちらはダミー広告の自主制作です。新幹線で行く金沢旅行を促す広告を想定したバナーを制作しました。</p>
     </div>
+    </div>
+
+        <div class="work-card fade-in-on-scroll" data-modal="work10">
+      <img src="image/label/label2.png" alt="自主制作" class="work-label-img"/>
+      <img src="image/mockup/10.png" alt="Work 10" loading="lazy"/>
+      <div class="work-info">
+        <h4 class="proti">抹茶スイーツ SNS広告</h4>
+        <p>こちらはダミー広告の自主制作です。製菓店の抹茶スイーツを想定したSNS広告を制作しました。</p>
+      </div>
+    
     
 </div> </div> </section> </div>
 
@@ -1687,7 +1670,7 @@ I strive to create seamless experiences where design and code naturally meet.
       <div class="summary-row">
         <div class="summary-label">使用ツール</div>
            <div class="summary-content">
-             <p>Figma / Visual Studio Code / Photoshop / Procreate</p>
+             <p>Figma / Visual Studio Code / Illustrator / Photoshop / Procreate</p>
            </div>
       </div>
 
@@ -1801,6 +1784,13 @@ I strive to create seamless experiences where design and code naturally meet.
            </div>
       </div>
 
+                  <div class="summary-row">
+         <div class="summary-label">制作期間</div>
+           <div class="summary-content">
+             <p>1日</p>
+      </div>
+      </div>
+
 
   <div class="work-modal-footer">
     <button class="back-home-btn">Back to Works</button>
@@ -1835,7 +1825,7 @@ I strive to create seamless experiences where design and code naturally meet.
       <div class="summary-row">
         <div class="summary-label">担当範囲</div>
            <div class="summary-content">
-             <p>デザイン</p>
+             <p>デザイン、レタッチ</p>
            </div>
       </div>
 
@@ -1867,6 +1857,12 @@ I strive to create seamless experiences where design and code naturally meet.
               「バレンタイン」「期間限定ショコラ」のフォントに遊びを入れ、女性向けの可愛らしい雰囲気が出るように意識しました。
              </p>
            </div>
+      </div>
+                  <div class="summary-row">
+         <div class="summary-label">制作期間</div>
+           <div class="summary-content">
+             <p>1日</p>
+      </div>
       </div>
 
 
@@ -1936,6 +1932,13 @@ I strive to create seamless experiences where design and code naturally meet.
               情報を整理し、関連性のある情報の文字サイズを統一し、より伝えたい部分は強調しました。文字列がメインのデザインでも地味な印象を与えないよう余白を意識しました。
              </p>
            </div>
+      </div>
+
+                  <div class="summary-row">
+         <div class="summary-label">制作期間</div>
+           <div class="summary-content">
+             <p>1日</p>
+      </div>
       </div>
 
   <div class="work-modal-footer">
@@ -2168,14 +2171,87 @@ UI/UX専任デザイナーとして、初期の要件定義や情報設計から
       </div>
       </div>
 
-
-  <div class="work-modal-footer">
+        <div class="work-modal-footer">
     <button class="back-home-btn">Back to Works</button>
   </div>
-  
    </div> <!--work-summary-->
       </div> <!--work-modal-content-->
 </div> <!--work-modal-work9-->
+
+
+<!-- Works10(BANNER)のポップアップ -->
+<div class="work-modal" id="work10">
+
+  <div class="work-modal-content">
+    <button class="modal-close">×</button>
+
+    <!-- Hero image -->
+    <div class="work-hero">
+      <img src="image/mockup/10.png" alt="">
+    </div>
+
+    <!-- Meta -->
+<div class="work-summary">
+
+      <div class="summary-row">
+        <div class="summary-label">サマリー</div>
+           <div class="summary-content">
+             <p>架空の和スイーツブランド「抹茶千層」のメインビジュアル兼、ポスター広告の自主制作です。既存の写真素材のポテンシャルを最大限に引き出すレタッチと、ブランドの世界観を構築するタイポグラフィの習得を目的として制作しました。</p>
+           </div>
+      </div>
+      
+
+      <div class="summary-row">
+        <div class="summary-label">担当範囲</div>
+           <div class="summary-content">
+             <p>デザイン、レタッチ</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-label">使用ツール</div>
+           <div class="summary-content">
+             <p>Photoshop / Illustrator</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">ターゲット</div>
+           <div class="summary-content">
+             <p>30〜60代の自分へのご褒美を求める女性。</p>
+           </div>
+      </div>
+
+          <div class="summary-row">
+         <div class="summary-label">雰囲気</div>
+           <div class="summary-content">
+             <p>和モダン、高級感がありつつも親しみやすいデザイン。</p>
+           </div>
+      </div>
+
+      <div class="summary-row">
+         <div class="summary-label">工夫した点</div>
+           <div class="summary-content">
+             <p>当初は「抹茶×黒背景」という王道の組み合わせで重厚な高級感を目指していましたが、ターゲットにより「親しみやすさ」や「素材の鮮度」を直感的に伝えるため、制作途中で方針を転換しました。背景を明るくレタッチし直し、元写真が持つ自然光の柔らかさを最大限に生かすことで、フレッシュで現代的な和モダンの世界観を構築しました。</p>
+             <p>中央のケーキを主役としつつ、キャッチコピー、タイトル、ロゴを四隅にバランス良く配置し、背景の明度に合わせてテキストの可読性を意識しました。</p>
+           </div>
+      </div>
+
+       <div class="summary-row">
+         <div class="summary-label">制作期間</div>
+           <div class="summary-content">
+             <p>1日</p>
+      </div>
+      </div>
+
+        <div class="work-modal-footer">
+    <button class="back-home-btn">Back to Works</button>
+  </div>
+   </div> <!--work-summary-->
+      </div> <!--work-modal-content-->
+</div> <!--work-modal-work10-->
+
+
 
 <!--footer-->
   <section class="footer-section">
